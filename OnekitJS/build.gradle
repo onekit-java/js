@@ -1,0 +1,49 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "29.0.3"
+
+
+    defaultConfig {
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'cn.onekit.x2x:onekit:1.0.0'
+    implementation 'org.apache.commons:commons-lang3:3.11'
+    implementation 'org.mozilla.javascript:com.springsource.org.mozilla.javascript:1.7.0.R2'
+    implementation 'androidx.annotation:annotation:1.1.0'
+}
+apply plugin: 'com.novoda.bintray-release'
+publish{
+    userOrg = 'www-onekit-cn' // Bintray 账号名
+    groupId = 'cn.onekit.x2x'
+    artifactId = 'js'
+    publishVersion = '1.0.0'
+    desc = ''
+    website = 'https://www.onekit.cn'
+}

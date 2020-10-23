@@ -1,0 +1,2 @@
+include ':app', ':OnekitJS'
+rootProject.name='JsDemo'
