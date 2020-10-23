@@ -6,7 +6,7 @@ android {
 
 
     defaultConfig {
-        minSdkVersion 23
+        minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -21,10 +21,9 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = 1.8
-        targetCompatibility = 1.8
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
-
 }
 
 dependencies {
@@ -35,7 +34,6 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'cn.onekit.x2x:onekit:1.0.0'
     implementation 'org.apache.commons:commons-lang3:3.11'
-    implementation 'org.mozilla.javascript:com.springsource.org.mozilla.javascript:1.7.0.R2'
     implementation 'androidx.annotation:annotation:1.1.0'
 }
 apply plugin: 'com.novoda.bintray-release'

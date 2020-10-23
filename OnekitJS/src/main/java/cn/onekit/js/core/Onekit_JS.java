@@ -256,17 +256,17 @@ public class Onekit_JS {
                 number = Double.doubleToRawLongBits(value.doubleValue());
                 break;
             case "Int8":
-                number = Short.toUnsignedLong(value.byteValue());
+                number = value.byteValue();
                 break;
             case "Uint8":
             case "Uint8Clamped":
-                number = Short.toUnsignedLong(value.byteValue());
+                number = value.byteValue();//Short.toUnsignedLong(value.byteValue());
                 break;
             case "Int16":
-                number = Short.toUnsignedLong(value.shortValue());
+                number = value.shortValue();//Short.toUnsignedLong(value.shortValue());
                 break;
             case "Uint16":
-                number = Short.toUnsignedLong(value.shortValue());
+                number = value.shortValue();//Short.toUnsignedLong(value.shortValue());
                 break;
             case "Int32":
                 number = value.intValue();

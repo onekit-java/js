@@ -406,8 +406,8 @@ public  class JsString implements JsObject_ {
 	}
 
 	private String _substring(int indexStart, int indexEnd) {
-		indexStart = Math.max(indexStart, 0);
-		indexEnd = Math.max(indexEnd, 0);
+		indexStart = java.lang.Math.max(indexStart, 0);
+		indexEnd = java.lang.Math.max(indexEnd, 0);
 		if (indexStart >= this.toString().length()) {
 			indexStart = this.toString().length() - 1;
 		}
