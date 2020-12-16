@@ -2,8 +2,8 @@ package cn.onekit.js;
 
 import java.lang.reflect.Field;
 
-public interface JsObject_ {
-    default JsObject_ get(String key){
+public interface JsAny {
+    default JsAny get(String key){
         try {
             if(this instanceof JsObject){
                 JsObject dict = ((JsObject)this);
@@ -12,20 +12,20 @@ public interface JsObject_ {
                 Class clazz = this.getClass();
                 Field field = clazz.getDeclaredField(key);
                 field.setAccessible(true);
-                return (JsObject_) field.get(this);
+                return (JsAny) field.get(this);
             }
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
-     default JsObject_ get(JsObject_ key){
+     default JsAny get(JsAny key){
          return get(((JsString)key).THIS);
      }
-    default JsObject_ get(int key){
+    default JsAny get(int key){
         return null;
     }
-    default  void set(String key, JsObject_ value){
+    default  void set(String key, JsAny value){
         if(this instanceof JsObject) {
             JsObject dict = ((JsObject)this);
              dict.put(key,value);
@@ -41,7 +41,7 @@ public interface JsObject_ {
             }
         }
     }
-    default void set(JsObject_ key, JsObject_ value){
+    default void set(JsAny key, JsAny value){
         set(((JsString)key).THIS,value);
     }
 /*
@@ -135,11 +135,11 @@ public interface JsObject_ {
         return new STRING(result.toString());
     }*/
 
-    default String toLocaleString(JsString locales, JsObject_ options){
+    default String toLocaleString(JsString locales, JsAny options){
         return toString();
     }
 
-    default JsObject_ invoke(JsObject_... params){
+    default JsAny invoke(JsAny... params){
         return null;
     }
 

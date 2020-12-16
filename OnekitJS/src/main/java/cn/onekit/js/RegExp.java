@@ -8,29 +8,29 @@ import java.util.regex.Pattern;
 
 import cn.onekit.js.core.Onekit_JS;
 
-public class RegExp implements JsObject_ {
+public class RegExp implements JsAny {
 
     public String getPattern() {
         return THIS.pattern();
     }
 
     @Override
-    public JsObject_ get(String key) {
+    public JsAny get(String key) {
         return null;
     }
 
     @Override
-    public JsObject_ get(JsObject_ key) {
+    public JsAny get(JsAny key) {
         return null;
     }
 
     @Override
-    public void set(String key, JsObject_ value) {
+    public void set(String key, JsAny value) {
 
     }
 
     @Override
-    public void set(JsObject_ key, JsObject_ value) {
+    public void set(JsAny key, JsAny value) {
 
     }
 
@@ -40,34 +40,34 @@ public class RegExp implements JsObject_ {
     }
 
     @Override
-    public String toLocaleString(JsString locales, JsObject_ options) {
+    public String toLocaleString(JsString locales, JsAny options) {
         return null;
     }
 
     @Override
-    public JsObject_ invoke(JsObject_... params) {
+    public JsAny invoke(JsAny... params) {
         return null;
     }
 
-    public static class Match implements JsObject_ {
+    public static class Match implements JsAny {
         JsArray _finds;
 
         @Override
-        public JsObject_ get(String key) {
+        public JsAny get(String key) {
             return null;
         }
 
-        public JsObject_ get(JsObject_ index) {
+        public JsAny get(JsAny index) {
             return _finds.get(index);
         }
 
         @Override
-        public void set(String key, JsObject_ value) {
+        public void set(String key, JsAny value) {
 
         }
 
         @Override
-        public void set(JsObject_ key, JsObject_ value) {
+        public void set(JsAny key, JsAny value) {
 
         }
 
@@ -77,12 +77,12 @@ public class RegExp implements JsObject_ {
         }
 
         @Override
-        public String toLocaleString(JsString locales, JsObject_ options) {
+        public String toLocaleString(JsString locales, JsAny options) {
             return null;
         }
 
         @Override
-        public JsObject_ invoke(JsObject_... params) {
+        public JsAny invoke(JsAny... params) {
             return null;
         }
 
@@ -178,47 +178,47 @@ public class RegExp implements JsObject_ {
     public RegExp(String pattern){
         this(pattern,null);
     }
-    public static JsObject_ _get(String key) {
+    public static JsAny _get(String key) {
         return $.get(key);
     }
     /////////////////
-    public static JsObject_ get$1() {
+    public static JsAny get$1() {
         return $s.get(new JsNumber(0));
     }
-    public static JsObject_ get$2() {
+    public static JsAny get$2() {
         return $s.get(new JsNumber(1));
     }
-    public static JsObject_ get$3() {
+    public static JsAny get$3() {
         return $s.get(new JsNumber(2));
     }
-    public static JsObject_ get$4() {
+    public static JsAny get$4() {
         return $s.get(new JsNumber(3));
     }
-    public static JsObject_ get$5() {
+    public static JsAny get$5() {
         return $s.get(new JsNumber(4));
     }
-    public static JsObject_ get$6() {
+    public static JsAny get$6() {
         return $s.get(new JsNumber(5));
     }
-    public static JsObject_ get$7() {
+    public static JsAny get$7() {
         return $s.get(new JsNumber(6));
     }
-    public static JsObject_ get$8() {
+    public static JsAny get$8() {
         return $s.get(new JsNumber(7));
     }
-    public static JsObject_ get$9() {
+    public static JsAny get$9() {
         return $s.get(new JsNumber(8));
     }
-    public static JsObject_ getInput() {
+    public static JsAny getInput() {
         return _get("$_");
     }
-    public static JsObject_ getLastMatch() {
+    public static JsAny getLastMatch() {
         return $.get("$&");
     }
-    public static JsObject_ getLastParen() {
+    public static JsAny getLastParen() {
         return $.get("$+");
     }
-    public static JsObject_ getLeftContext() {
+    public static JsAny getLeftContext() {
         return $.get("$`");
     }
     public  String getFlags() {
@@ -242,7 +242,7 @@ public class RegExp implements JsObject_ {
     public  final boolean getUnicode(){
         return getFlags().contains("u");
     }
-    public static final JsObject_ getRightContext(){
+    public static final JsAny getRightContext(){
         return $.get("$'");
     }
     int _lastIndex=0;

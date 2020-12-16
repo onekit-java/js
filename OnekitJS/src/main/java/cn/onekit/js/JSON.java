@@ -10,7 +10,7 @@ import cn.onekit.js.core.function;
 public class JSON {
 	private static Gson gson = new Gson();
 
-	public static JsObject_ parse(String aString) {
+	public static JsAny parse(String aString) {
 		try {
 			if (aString == null) {
 				return null;
@@ -44,10 +44,10 @@ public class JSON {
 			return null;
 		}
 	}
-	public static String _entry(int depth, String key, JsObject_ value, JsObject_ replacer, int space){
+	public static String _entry(int depth, String key, JsAny value, JsAny replacer, int space){
 		return String.format("\"%s\":%s",key,_stringify(depth+1,value,replacer,space));
 	}
-	public static String _stringify(int depth, JsObject_ json, JsObject_ replacer, int space) {
+	public static String _stringify(int depth, JsAny json, JsAny replacer, int space) {
 		if(space>10){
 			space=10;
 		}
@@ -70,7 +70,7 @@ public class JSON {
 			JsArray array = (JsArray) json;
 			result.append(tab+"[\r\n");
 			int i=0;
-			for(JsObject_ item: array){
+			for(JsAny item: array){
 				result.append(_stringify(depth+1,item,replacer,space));
 				if(i<array.size()-1) {
 					result.append(",");
@@ -84,7 +84,7 @@ public class JSON {
 			result.append(tab+"{\r\n");
 			int i=0;
 			for(String key : dict.keySet()){
-				JsObject_ value = dict.get(key);
+				JsAny value = dict.get(key);
 				if(replacer!=null){
 					if(replacer instanceof function) {
 						result.append(_entry(depth,key,value, replacer,space));
@@ -122,20 +122,20 @@ public class JSON {
 		}
 		return result.toString();
 	}
-	public static String stringify(JsObject_ json, JsObject_ replacer, int space) {
+	public static String stringify(JsAny json, JsAny replacer, int space) {
 		return _stringify( 0,json, replacer,space);
 	}
-	public static String stringify(JsObject_ json, JsObject_ replacer, String space) {
+	public static String stringify(JsAny json, JsAny replacer, String space) {
 		if(space.length()>10){
 			space = space.substring(0,10);
 		}
 		return stringify( json, replacer, space.length());
 	}
-	public static String stringify(JsObject_ json, JsObject_ replacer) {
+	public static String stringify(JsAny json, JsAny replacer) {
 		return stringify(json, replacer, 0);
 	}
 
-	public static String stringify(JsObject_ json) {
+	public static String stringify(JsAny json) {
 		return stringify(json, null);
 	}
 }

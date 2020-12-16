@@ -2,7 +2,7 @@ package cn.onekit.js;
 
 import cn.onekit.js.core.*;
 
-public class Promise implements JsObject_ {
+public class Promise implements JsAny {
     function _callback;
 
     @Override
@@ -81,11 +81,11 @@ public class Promise implements JsObject_ {
         return null;//new Promise((resolve, reject) -> (()invoke(reason));
     }
 
-    public static Promise resolve(JsObject_ value) {
+    public static Promise resolve(JsAny value) {
         return new Promise(new function(){
 
             @Override
-            public JsObject_ invoke(JsObject_... arguments) {
+            public JsAny invoke(JsAny... arguments) {
                 try {
                     function resolve = (function) arguments[0];
                     resolve.invoke(value);
@@ -100,22 +100,22 @@ public class Promise implements JsObject_ {
     }
 
     @Override
-    public JsObject_ get(String key) {
+    public JsAny get(String key) {
         return null;
     }
 
     @Override
-    public JsObject_ get(JsObject_ key) {
+    public JsAny get(JsAny key) {
         return null;
     }
 
     @Override
-    public void set(String key, JsObject_ value) {
+    public void set(String key, JsAny value) {
 
     }
 
     @Override
-    public void set(JsObject_ key, JsObject_ value) {
+    public void set(JsAny key, JsAny value) {
 
     }
 
@@ -125,12 +125,12 @@ public class Promise implements JsObject_ {
     }
 
     @Override
-    public String toLocaleString(JsString locales, JsObject_ options) {
+    public String toLocaleString(JsString locales, JsAny options) {
         return null;
     }
 
     @Override
-    public JsObject_ invoke(JsObject_... params) {
+    public JsAny invoke(JsAny... params) {
         return null;
     }
 }

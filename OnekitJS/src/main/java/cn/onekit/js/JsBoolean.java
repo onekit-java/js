@@ -1,11 +1,11 @@
 package cn.onekit.js;
 
-public class JsBoolean implements JsObject_ {
+public class JsBoolean implements JsAny {
     public boolean THIS;
     public JsBoolean(boolean value) {
        THIS = value;
     }
-    public JsBoolean(JsObject_ value) {
+    public JsBoolean(JsAny value) {
         if (value == null) {
             THIS= false;
         }
@@ -23,7 +23,7 @@ public class JsBoolean implements JsObject_ {
     public static String toString(Boolean THIS) {
         return THIS.toString();
     }
-    public static JsBoolean valueof(JsObject_ value) {
+    public static JsBoolean valueof(JsAny value) {
         return new JsBoolean(value);
     }
     public JsString ToString() {
@@ -31,32 +31,32 @@ public class JsBoolean implements JsObject_ {
     }
 
     @Override
-    public String toLocaleString(JsString locales, JsObject_ options) {
+    public String toLocaleString(JsString locales, JsAny options) {
         return null;
     }
 
     @Override
-    public JsObject_ invoke(JsObject_... params) {
+    public JsAny invoke(JsAny... params) {
         return null;
     }
 
     @Override
-    public JsObject_ get(String key) {
+    public JsAny get(String key) {
         return null;
     }
 
     @Override
-    public JsObject_ get(JsObject_ key) {
+    public JsAny get(JsAny key) {
         return null;
     }
 
     @Override
-    public void set(String key, JsObject_ value) {
+    public void set(String key, JsAny value) {
 
     }
 
     @Override
-    public void set(JsObject_ key, JsObject_ value) {
+    public void set(JsAny key, JsAny value) {
 
     }
 }

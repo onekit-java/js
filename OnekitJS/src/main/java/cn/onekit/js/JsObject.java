@@ -5,7 +5,7 @@ import java.util.Random;
 import cn.onekit.js.core.Iterator;
 import cn.onekit.js.core.Onekit_JS;
 
-public class JsObject extends HashMap<String, JsObject_> implements JsObject_ {
+public class JsObject extends HashMap<String, JsAny> implements JsAny {
     ///////////////////////////////////////
     int _hashCode =  new Random().nextInt();
     @Override
@@ -18,7 +18,7 @@ public class JsObject extends HashMap<String, JsObject_> implements JsObject_ {
 
     public static JsObject assign(JsObject target, JsObject... source) {
         for(JsObject dict : source) {
-            for (Entry<String, JsObject_> entry : dict.entrySet()) {
+            for (Entry<String, JsAny> entry : dict.entrySet()) {
                 target.put(entry.getKey(),  entry.getValue());
             }
         }
@@ -26,7 +26,7 @@ public class JsObject extends HashMap<String, JsObject_> implements JsObject_ {
     }
     public static JsObject create(JsObject target, JsObject propertiesObject) {
         JsObject result = new JsObject();
-        for (Entry<String, JsObject_> entry : target.entrySet()) {
+        for (Entry<String, JsAny> entry : target.entrySet()) {
             result.put(entry.getKey(), entry.getValue());
         }
         return result;
@@ -42,7 +42,7 @@ public class JsObject extends HashMap<String, JsObject_> implements JsObject_ {
 
             @Override
             public JsArray getValue(Object value) {
-                Entry<String, JsObject_> entry= (Entry) value;
+                Entry<String, JsAny> entry= (Entry) value;
                 return new JsArray(){{add(new JsString(entry.getKey()));add(entry.getValue());}};
             }
         };
@@ -58,7 +58,7 @@ public class JsObject extends HashMap<String, JsObject_> implements JsObject_ {
     public static JsArray keys(JsArray array) {
         JsArray result = new JsArray();
         for (int i=0;i<array.size();i++) {
-            JsObject_ item = array.get(i);
+            JsAny item = array.get(i);
             if(item==null){
                 continue;
             }
@@ -83,25 +83,25 @@ public class JsObject extends HashMap<String, JsObject_> implements JsObject_ {
         result.append("}");
         return result.toString();
     }
-    public JsString toLocaleString(JsObject_ locales, JsObject_ options){
+    public JsString toLocaleString(JsAny locales, JsAny options){
         return new JsString("");
     }
     @Override
-    public JsObject_ get(String key){
+    public JsAny get(String key){
        return super.get(key);
     }
     @Override
-    public JsObject_ get(JsObject_ key) {
+    public JsAny get(JsAny key) {
         return get(((JsString)key).THIS);
     }
 
     @Override
-    public void set(String key, JsObject_ value) {
+    public void set(String key, JsAny value) {
         put(key, value);
     }
 
     @Override
-    public void set(JsObject_ key, JsObject_ value) {
+    public void set(JsAny key, JsAny value) {
         put(key.toString(), value);
     }
 
@@ -111,12 +111,12 @@ public class JsObject extends HashMap<String, JsObject_> implements JsObject_ {
     }
 
     @Override
-    public String toLocaleString(JsString locales, JsObject_ options) {
+    public String toLocaleString(JsString locales, JsAny options) {
         return null;
     }
 
     @Override
-    public JsObject_ invoke(JsObject_... params) {
+    public JsAny invoke(JsAny... params) {
         return null;
     }
 

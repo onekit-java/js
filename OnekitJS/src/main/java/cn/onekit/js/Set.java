@@ -7,14 +7,14 @@ import cn.onekit.js.core.Iterator;
 import cn.onekit.js.core.Onekit_JS;
 import cn.onekit.js.core.function;
 
-public class Set implements Iterable<JsObject_> , JsObject_ {
+public class Set implements Iterable<JsAny> , JsAny {
 
     int _hashCode =  new Random().nextInt();
     @Override
     public int hashCode() {
         return _hashCode;
     }
-    java.util.Set<JsObject_> _THIS;
+    java.util.Set<JsAny> _THIS;
 
     public Set(JsArray array) {
         _THIS = new HashSet(array);
@@ -33,7 +33,7 @@ public class Set implements Iterable<JsObject_> , JsObject_ {
         return _THIS.size();
     }
 
-    public Set add(JsObject_ value) {
+    public Set add(JsAny value) {
         _THIS.add(value);
         return this;
     }
@@ -42,19 +42,19 @@ public class Set implements Iterable<JsObject_> , JsObject_ {
         _THIS.clear();
     }
 
-    public boolean delete(JsObject_ value) {
+    public boolean delete(JsAny value) {
         return _THIS.remove(value);
     }
-    public  void forEach(function callback, JsObject_ THIS) {
+    public  void forEach(function callback, JsAny THIS) {
         callback.thisArg = THIS;
-        for(JsObject_ item : _THIS){
+        for(JsAny item : _THIS){
             callback.invoke(item,item,this);
         }
     }
     public void forEach(function callback) {
         forEach(callback,null);
     }
-    public boolean has(JsObject_ value) {
+    public boolean has(JsAny value) {
         return _THIS.contains(value);
     }
 
@@ -64,7 +64,7 @@ public class Set implements Iterable<JsObject_> , JsObject_ {
         StringBuilder result=new StringBuilder();
         result.append("Set [");
         int i=0;
-        for (JsObject_ item : _THIS) {
+        for (JsAny item : _THIS) {
             if (i++ > 0) {
                 result.append(",");
             }
@@ -77,8 +77,8 @@ public class Set implements Iterable<JsObject_> , JsObject_ {
     public Iterator values() {
         return  new Iterator(_THIS.iterator()) {
             @Override
-            public JsObject_ getValue(Object value) {
-                return (JsObject_) value;
+            public JsAny getValue(Object value) {
+                return (JsAny) value;
             }
 
         };
@@ -90,22 +90,22 @@ public class Set implements Iterable<JsObject_> , JsObject_ {
     }
 
     @Override
-    public JsObject_ get(String key) {
+    public JsAny get(String key) {
         return null;
     }
 
     @Override
-    public JsObject_ get(JsObject_ key) {
+    public JsAny get(JsAny key) {
         return null;
     }
 
     @Override
-    public void set(String key, JsObject_ value) {
+    public void set(String key, JsAny value) {
 
     }
 
     @Override
-    public void set(JsObject_ key, JsObject_ value) {
+    public void set(JsAny key, JsAny value) {
 
     }
 
@@ -115,12 +115,12 @@ public class Set implements Iterable<JsObject_> , JsObject_ {
     }
 
     @Override
-    public String toLocaleString(JsString locales, JsObject_ options) {
+    public String toLocaleString(JsString locales, JsAny options) {
         return null;
     }
 
     @Override
-    public JsObject_ invoke(JsObject_... params) {
+    public JsAny invoke(JsAny... params) {
         return null;
     }
 }

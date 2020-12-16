@@ -6,7 +6,7 @@ android {
 
 
     defaultConfig {
-        minSdkVersion 24
+        minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -32,7 +32,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
 
     implementation 'com.google.code.gson:gson:2.8.6'
-    implementation 'cn.onekit.x2x:onekit:1.1.0'
+    implementation 'cn.onekit.x2x:onekit:1.1.1'
     implementation 'org.apache.commons:commons-lang3:3.11'
     implementation 'androidx.annotation:annotation:1.1.0'
 }

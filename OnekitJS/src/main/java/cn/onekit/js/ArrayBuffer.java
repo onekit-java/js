@@ -3,12 +3,12 @@ package cn.onekit.js;
 import cn.onekit.js.core.Onekit_JS;
 
 
-public class ArrayBuffer implements JsObject_ {
+public class ArrayBuffer implements JsAny {
     public byte[] _data;
     public ArrayBuffer(byte[] data) {
         _data=data;
     }
-    public ArrayBuffer(JsObject_ data) {
+    public ArrayBuffer(JsAny data) {
         if (data instanceof JsArray) {
             JsArray array = (JsArray) data;
             this._data = new byte[array.size()];
@@ -26,17 +26,17 @@ public class ArrayBuffer implements JsObject_ {
     }
 
     @Override
-    public String toLocaleString(JsString locales, JsObject_ options) {
+    public String toLocaleString(JsString locales, JsAny options) {
         return null;
     }
 
     @Override
-    public JsObject_ invoke(JsObject_... params) {
+    public JsAny invoke(JsAny... params) {
         return null;
     }
 
     ////////////////////////////////////
-    public JsObject_ getByteLength() {
+    public JsAny getByteLength() {
         return new JsNumber(_data.length);
     }
 
@@ -44,7 +44,7 @@ public class ArrayBuffer implements JsObject_ {
         return new JsNumber(_data[index]);
     }
 
-    public static JsBoolean isView(JsObject_ arg) {
+    public static JsBoolean isView(JsAny arg) {
         if (arg == null) {
             return new JsBoolean(false);
         }
@@ -55,7 +55,7 @@ public class ArrayBuffer implements JsObject_ {
         return false;
     }
 
-    public ArrayBuffer slice(JsObject_ begin, JsObject_ end) {
+    public ArrayBuffer slice(JsAny begin, JsAny end) {
         int b = Onekit_JS.number(begin, 0, 0).intValue();
         int e = Onekit_JS.number(end, 0, 0).intValue();
         byte[] data = new byte[e - b];
@@ -69,7 +69,7 @@ public class ArrayBuffer implements JsObject_ {
         return slice(begin, getByteLength());
     }
 
-    public static ArrayBuffer transfer(ArrayBuffer oldBuffer, JsObject_ newByteLength) {
+    public static ArrayBuffer transfer(ArrayBuffer oldBuffer, JsAny newByteLength) {
         ArrayBuffer result = new ArrayBuffer(newByteLength);
         int len = ((JsNumber) newByteLength).THIS.intValue();
         for (int i = 0; i < len && i < oldBuffer._data.length; i++) {
@@ -85,22 +85,22 @@ public class ArrayBuffer implements JsObject_ {
     }
 
     @Override
-    public JsObject_ get(String key) {
+    public JsAny get(String key) {
         return null;
     }
 
     @Override
-    public JsObject_ get(JsObject_ key) {
+    public JsAny get(JsAny key) {
         return null;
     }
 
     @Override
-    public void set(String key, JsObject_ value) {
+    public void set(String key, JsAny value) {
 
     }
 
     @Override
-    public void set(JsObject_ key, JsObject_ value) {
+    public void set(JsAny key, JsAny value) {
 
     }
 }

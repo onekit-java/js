@@ -2,7 +2,7 @@ package cn.onekit.js;
 
 import cn.onekit.js.core.Onekit_JS;
 
-public class JsNumber implements JsObject_ {
+public class JsNumber implements JsAny {
     public static final JsNumber EPSILON = new JsNumber(2.2204460492503130808472633361816E-16);
     //
     public static final JsNumber MAX_SAFE_INTEGER = new JsNumber(9007199254740991L);
@@ -29,19 +29,19 @@ public class JsNumber implements JsObject_ {
     }
 
     ///////////..........///////////
-    public static JsBoolean isFinite(JsObject_ value){
+    public static JsBoolean isFinite(JsAny value){
         if(!(value instanceof Number)){
             return new JsBoolean(false);
         }
         return new JsBoolean(Double.isFinite(Double.parseDouble(value.toString())));
     }
-    public static JsBoolean isInteger(JsObject_ value){
+    public static JsBoolean isInteger(JsAny value){
         return new JsBoolean( Onekit_JS.isNumber(value));
     }
-    public static JsBoolean isNaN(JsObject_ value){
+    public static JsBoolean isNaN(JsAny value){
         return new JsBoolean(!Onekit_JS.isNumber(value));
     }
-    public  static JsBoolean isSafeInteger(JsObject_ testValue) {
+    public  static JsBoolean isSafeInteger(JsAny testValue) {
         if (isNaN(testValue).THIS) {
             return new JsBoolean(false);
         }
@@ -56,19 +56,19 @@ public class JsNumber implements JsObject_ {
         }
         return new JsBoolean(false);
     }
-    public static JsNumber parseFloat(JsObject_ aString){
+    public static JsNumber parseFloat(JsAny aString){
        if(!Onekit_JS.isNumber(aString)){
            return new JsNumber(0.0);
        }
        return new JsNumber( Double.parseDouble(aString.toString()));
     }
-    public  static JsNumber parseInt(JsObject_ aString) {
+    public  static JsNumber parseInt(JsAny aString) {
         if (!Onekit_JS.isNumber(aString)) {
             return new JsNumber(0L);
         }
         return new JsNumber((long)Double.parseDouble(aString.toString()));
     }
-    public static JsObject_ Number(JsObject_ value) {
+    public static JsAny Number(JsAny value) {
         return new JsNumber(value);
 
     }
@@ -78,7 +78,7 @@ public class JsNumber implements JsObject_ {
     public JsNumber(Number value){
         this.THIS = value;
     }
-    public JsNumber(JsObject_ value){
+    public JsNumber(JsAny value){
         if(value instanceof JsNumber) {
             this.THIS = ((JsNumber)value).THIS;
         }else{
@@ -109,7 +109,7 @@ public class JsNumber implements JsObject_ {
                     fractionDigits));
         }
     }
-    public JsString toExponential(JsObject_ fractionDigits) {
+    public JsString toExponential(JsAny fractionDigits) {
         Integer fractionDigits_ = Onekit_JS.number(fractionDigits,0,0).intValue();
         return _toExponential( fractionDigits_);
     }
@@ -117,7 +117,7 @@ public class JsNumber implements JsObject_ {
         return toExponential(null);
     }
     //
-    public JsString toFixed(JsObject_ digits){
+    public JsString toFixed(JsAny digits){
         if(digits==null){
             return new JsString(String.valueOf(THIS.longValue()));
         }
@@ -128,23 +128,23 @@ public class JsNumber implements JsObject_ {
     public JsString toFixed(){
         return toFixed(null);
     }
-    public JsString toLocaleString(JsObject_ locales , JsObject_ options){
+    public JsString toLocaleString(JsAny locales , JsAny options){
         return new JsString("");
     }
-    public JsString toLocaleString(JsObject_ locales ){
+    public JsString toLocaleString(JsAny locales ){
         return toLocaleString(locales,null);
     }
     public JsString toLocaleString(){
         return toLocaleString(null);
     }
-    public JsString toPrecision(JsObject_ precision){
+    public JsString toPrecision(JsAny precision){
         return new JsString("");
     }
     public JsString valueOf(){
         return new JsString("");
     }
 
-    public JsString ToString(JsObject_ radix) {
+    public JsString ToString(JsAny radix) {
         int r = Onekit_JS.number(radix,10,10).intValue();
         if(THIS instanceof Integer){
             return new JsString(THIS.toString());
@@ -168,22 +168,22 @@ public class JsNumber implements JsObject_ {
     }
 
     @Override
-    public JsObject_ get(String key) {
+    public JsAny get(String key) {
         return null;
     }
 
     @Override
-    public JsObject_ get(JsObject_ key) {
+    public JsAny get(JsAny key) {
         return null;
     }
 
     @Override
-    public void set(String key, JsObject_ value) {
+    public void set(String key, JsAny value) {
 
     }
 
     @Override
-    public void set(JsObject_ key, JsObject_ value) {
+    public void set(JsAny key, JsAny value) {
 
     }
 
@@ -193,12 +193,12 @@ public class JsNumber implements JsObject_ {
     }
 
     @Override
-    public String toLocaleString(JsString locales, JsObject_ options) {
+    public String toLocaleString(JsString locales, JsAny options) {
         return null;
     }
 
     @Override
-    public JsObject_ invoke(JsObject_... params) {
+    public JsAny invoke(JsAny... params) {
         return null;
     }
 }

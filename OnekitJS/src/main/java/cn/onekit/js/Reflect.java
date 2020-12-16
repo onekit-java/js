@@ -2,10 +2,10 @@ package cn.onekit.js;
 
 public class Reflect  {
     ////////////////////////
-    public static JsObject_ apply(JsObject target, JsObject thisArgument, JsObject argumentsList){
+    public static JsAny apply(JsObject target, JsObject thisArgument, JsObject argumentsList){
         return null;
     }
-    public static JsObject_ construct(JsObject target, JsObject argumentsList, JsObject newTarget ){
+    public static JsAny construct(JsObject target, JsObject argumentsList, JsObject newTarget ){
         return null;
     }
     public static boolean defineProperty(JsObject target, String  propertyKey, String attributes){
@@ -14,13 +14,13 @@ public class Reflect  {
     public static boolean deleteProperty(JsObject target, String  propertyKey){
         return true;
     }
-    public static JsObject_ get(JsObject target, String  propertyKey, JsObject receiver){
+    public static JsAny get(JsObject target, String  propertyKey, JsObject receiver){
         return null;
     }
-    public static JsObject_ getOwnPropertyDescriptor(JsObject target, String propertyKey){
+    public static JsAny getOwnPropertyDescriptor(JsObject target, String propertyKey){
         return null;
     }
-    public static JsObject_ getPrototypeOf(JsObject target){
+    public static JsAny getPrototypeOf(JsObject target){
         return null;
     }
     public static boolean has(JsObject target, String propertyKey){

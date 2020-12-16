@@ -7,7 +7,7 @@ import java.util.regex.Matcher;
 import cn.onekit.js.core.Onekit_JS;
 import cn.onekit.js.core.function;
 
-public  class JsString implements JsObject_ {
+public  class JsString implements JsAny {
 	public String THIS;
 
 	public JsString(String THIS) {
@@ -34,33 +34,33 @@ public  class JsString implements JsObject_ {
 	return new STRING(hashCode;
 }*/
 
-	public JsObject_ _index(String aString, int index) {
+	public JsAny _index(String aString, int index) {
 		if (index >= 0) {
 			return new JsNumber(index);
 		}
 		return new JsNumber(aString.length() + index);
 	}
 
-	public JsObject_ get(JsObject_ i) {
+	public JsAny get(JsAny i) {
 		int index = Onekit_JS.number(i, 0, 0).intValue();
 		return new JsString(String.valueOf(this.toString().charAt(index)));
 	}
 
 	@Override
-	public void set(String key, JsObject_ value) {
+	public void set(String key, JsAny value) {
 
 	}
 
 	@Override
-	public void set(JsObject_ key, JsObject_ value) {
+	public void set(JsAny key, JsAny value) {
 
 	}
 
 	///////////////////////////////
-	public JsString fromCharCode(JsObject_... nums) {
+	public JsString fromCharCode(JsAny... nums) {
 		try {
 			StringBuilder result = new StringBuilder();
-			for (JsObject_ num : nums) {
+			for (JsAny num : nums) {
 				int number = new JsNumber(num).THIS.intValue();
 				if (number > 0xFFFF) {
 					number = number % 0xFFFF;
@@ -73,7 +73,7 @@ public  class JsString implements JsObject_ {
 		}
 	}
 
-	public JsString fromCodePoint(JsObject_... nums) {
+	public JsString fromCodePoint(JsAny... nums) {
 		JsArray codeUnits = new JsArray();
 		JsNumber codeLen;
 		StringBuilder result = new StringBuilder();
@@ -95,15 +95,15 @@ public  class JsString implements JsObject_ {
 				);
 			}
 			if (codeLen.THIS.intValue() >= 0x3fff) {
-				result.append(fromCharCode(codeUnits.toArray(new JsObject_[0])));
+				result.append(fromCharCode(codeUnits.toArray(new JsAny[0])));
 				//codeUnits.length = 0;
 			}
 		}
-		return new JsString(result + fromCharCode(codeUnits.toArray(new JsObject_[0])).toString());
+		return new JsString(result + fromCharCode(codeUnits.toArray(new JsAny[0])).toString());
 
 	}
 
-	public JsString anchor(JsObject_ name) {
+	public JsString anchor(JsAny name) {
 		return new JsString(String.format("<a name=\"%s\">%s</a>", name, this));
 	}
 
@@ -119,12 +119,12 @@ public  class JsString implements JsObject_ {
 		return new JsString(String.format("<bold>%s</bold>", this));
 	}
 
-	public JsString charAt(JsObject_ index) {
+	public JsString charAt(JsAny index) {
 		int i = Onekit_JS.number(index, 0, 0).intValue();
 		return new JsString(String.valueOf(this.toString().charAt(i)));
 	}
 
-	public JsString charCodeAt(JsObject_ index) {
+	public JsString charCodeAt(JsAny index) {
 		int i = Onekit_JS.number(index, 0, 0).intValue();
 		return new JsString(String.valueOf(this.toString().charAt(i)));
 	}
@@ -142,20 +142,20 @@ public  class JsString implements JsObject_ {
 
 	}
 
-	public JsString concat(JsObject_... strings) {
+	public JsString concat(JsAny... strings) {
 		StringBuilder result = new StringBuilder(this.toString());
-		for (JsObject_ THIS : strings) {
+		for (JsAny THIS : strings) {
 			result.append(THIS);
 		}
 		return new JsString(result.toString());
 	}
 
-	public JsBoolean endsWith(JsObject_ searchString, JsObject_ length) {
+	public JsBoolean endsWith(JsAny searchString, JsAny length) {
 		int len = Onekit_JS.number(length, 0, 0).intValue();
 		return new JsBoolean(this.toString().substring(len - searchString.toString().length(), len).equals(searchString.toString()));
 	}
 
-	public JsBoolean endsWith(JsObject_ searchString) {
+	public JsBoolean endsWith(JsAny searchString) {
 		return endsWith(searchString, new JsNumber(this.toString().length()));
 	}
 
@@ -163,15 +163,15 @@ public  class JsString implements JsObject_ {
 		return new JsString(String.format("<tt>%s</tt>", this));
 	}
 
-	public JsString fontcolor(JsObject_ color) {
+	public JsString fontcolor(JsAny color) {
 		return new JsString(String.format("<font color=\"%s\">%s</font>", color, this));
 	}
 
-	public JsString fontsize(JsObject_ size) {
+	public JsString fontsize(JsAny size) {
 		return new JsString(String.format("<font size=\"%s\">%s</font>", size, this));
 	}
 
-	public JsBoolean includes(JsObject_ searchString, JsObject_ position) {
+	public JsBoolean includes(JsAny searchString, JsAny position) {
 		if (position == null) {
 			position = new JsNumber(0);
 		}
@@ -179,12 +179,12 @@ public  class JsString implements JsObject_ {
 		return new JsBoolean(this.toString().substring(pos).contains(searchString.toString()));
 	}
 
-	public JsNumber indexOf(JsObject_ searchValue, JsObject_ from) {
+	public JsNumber indexOf(JsAny searchValue, JsAny from) {
 		int f = Onekit_JS.number(from, 0, 0).intValue();
 		return new JsNumber(this.toString().indexOf(searchValue.toString(), f));
 	}
 
-	public JsNumber indexOf(JsObject_ searchValue) {
+	public JsNumber indexOf(JsAny searchValue) {
 		return indexOf(searchValue, new JsNumber(0));
 	}
 
@@ -192,20 +192,20 @@ public  class JsString implements JsObject_ {
 		return new JsString(String.format("<i>%s</i>", this));
 	}
 
-	public JsNumber lastIndexOf(JsObject_ searchValue, JsObject_ fromIndex) {
+	public JsNumber lastIndexOf(JsAny searchValue, JsAny fromIndex) {
 		int from = Onekit_JS.number(fromIndex, 0, 0).intValue();
 		return new JsNumber(this.toString().lastIndexOf(searchValue.toString(), from));
 	}
 
-	public JsNumber lastIndexOf(JsObject_ searchValue) {
+	public JsNumber lastIndexOf(JsAny searchValue) {
 		return lastIndexOf(searchValue, new JsNumber(Double.POSITIVE_INFINITY));
 	}
 
-	public JsString link(JsObject_ url) {
+	public JsString link(JsAny url) {
 		return new JsString(String.format("<a href=\"%s\">%s</i>", url, this));
 	}
 
-	public JsNumber localeCompare(JsObject_ compareString, String locales, JsObject options) {
+	public JsNumber localeCompare(JsAny compareString, String locales, JsObject options) {
 		return new JsNumber(0);
 	}
 
@@ -233,7 +233,7 @@ public  class JsString implements JsObject_ {
 		return null;
 	}
 
-	public JsString padEnd(JsObject_ targetLength, JsObject_ padString) {
+	public JsString padEnd(JsAny targetLength, JsAny padString) {
 		int len = Onekit_JS.number(targetLength, 0, 0).intValue();
 		if (len < this.toString().length()) {
 			return this;
@@ -246,11 +246,11 @@ public  class JsString implements JsObject_ {
 		return new JsString(sb.toString().substring(0, len));
 	}
 
-	public JsString padEnd(JsObject_ targetLength) {
+	public JsString padEnd(JsAny targetLength) {
 		return padEnd(targetLength, new JsString(" "));
 	}
 
-	public JsString padStart(JsObject_ targetLength, String padString) {
+	public JsString padStart(JsAny targetLength, String padString) {
 		int len = Onekit_JS.number(targetLength, 0, 0).intValue();
 		if (len < this.toString().length()) {
 			return this;
@@ -263,11 +263,11 @@ public  class JsString implements JsObject_ {
 		return new JsString(sb.toString().substring(0, len));
 	}
 
-	public JsString padStart(JsObject_ targetLength) {
+	public JsString padStart(JsAny targetLength) {
 		return padStart(targetLength, " ");
 	}
 
-	public JsString repeat(JsObject_ count) {
+	public JsString repeat(JsAny count) {
 		int c = Onekit_JS.number(count, 0, 0).intValue();
 		StringBuilder result = new StringBuilder();
 		for (int i = 0; i < c; i++) {
@@ -300,7 +300,7 @@ public  class JsString implements JsObject_ {
 		Matcher matcher = regexp.THIS.matcher(this.toString());
 		RegExp.$s.clear();
 		while (matcher.find()) {
-			List<JsObject_> arguments = new ArrayList<>();
+			List<JsAny> arguments = new ArrayList<>();
 			arguments.add(new JsString(matcher.group()));
 			for (int i = 1; i <= matcher.groupCount(); i++) {
 				String group = matcher.group(i);
@@ -311,7 +311,7 @@ public  class JsString implements JsObject_ {
 			arguments.add(this);
 			this.THIS = this.toString().replaceFirst(
 					regexp.getPattern(),
-					function.invoke(arguments.toArray(new JsObject_[0])).toString()
+					function.invoke(arguments.toArray(new JsAny[0])).toString()
 			);
 			if (!regexp.getFlags().contains("g")) {
 				break;
@@ -320,11 +320,11 @@ public  class JsString implements JsObject_ {
 		return this;
 	}
 
-	public JsString replace(JsObject_ substr, String newSubStr) {
+	public JsString replace(JsAny substr, String newSubStr) {
 		return new JsString(this.toString().replaceFirst(substr.toString(), newSubStr));
 	}
 
-	public JsString replace(JsObject_ substr, function function) {
+	public JsString replace(JsAny substr, function function) {
 		int p = this.toString().indexOf(substr.toString());
 		if (p < 0) {
 			return this;
@@ -340,14 +340,14 @@ public  class JsString implements JsObject_ {
 		return new JsNumber(-1);
 	}
 
-	public JsString slice(JsObject_ start, JsObject_ end) {
+	public JsString slice(JsAny start, JsAny end) {
 		int s = Onekit_JS.number(start, 0, 0).intValue();
 		int e = Onekit_JS.number(end, 0, 0).intValue();
 		return new JsString(this.toString().substring(s, e));
 
 	}
 
-	public JsString slice(JsObject_ start) {
+	public JsString slice(JsAny start) {
 		return slice(start, new JsNumber(this.toString().length()));
 	}
 
@@ -355,7 +355,7 @@ public  class JsString implements JsObject_ {
 		return new JsString(String.format("<small>%s</small>", this));
 	}
 
-	public JsArray split(JsObject_ separator, JsObject_ limit) {
+	public JsArray split(JsAny separator, JsAny limit) {
 		int l = Onekit_JS.number(limit, 0, 0).intValue();
 		String[] array = this.toString().split(separator.toString(), l);
 		JsArray result = new JsArray();
@@ -369,7 +369,7 @@ public  class JsString implements JsObject_ {
 		return result;
 	}
 
-	public JsArray split(JsObject_ separator) {
+	public JsArray split(JsAny separator) {
 		return split(separator, new JsNumber(0));
 	}
 
@@ -377,7 +377,7 @@ public  class JsString implements JsObject_ {
 		return JsArray.from(this,null,null);
 	}
 
-	public JsBoolean startsWith(JsObject_ searchString, JsObject_ position) {
+	public JsBoolean startsWith(JsAny searchString, JsAny position) {
 		if (position == null) {
 			position = new JsNumber(0);
 		}
@@ -394,13 +394,13 @@ public  class JsString implements JsObject_ {
 		return new JsString(String.format("<sub>%s</sub>", this));
 	}
 
-	public JsString substr(JsObject_ start, JsObject_ length) {
+	public JsString substr(JsAny start, JsAny length) {
 		int s = Onekit_JS.number(start, 0, 0).intValue();
 		int l = Onekit_JS.number(length, 0, 0).intValue();
 		return new JsString(this.toString().substring(s, s + l));
 	}
 
-	public JsString substr(JsObject_ start) {
+	public JsString substr(JsAny start) {
 		int s = Onekit_JS.number(start, 0, 0).intValue();
 		return substr(start, new JsNumber(this.toString().length() - s));
 	}
@@ -422,11 +422,11 @@ public  class JsString implements JsObject_ {
 		return this.toString().substring(indexStart, indexEnd);
 	}
 
-	public JsString substring(JsObject_ indexStart, JsObject_ indexEnd) {
+	public JsString substring(JsAny indexStart, JsAny indexEnd) {
 		return new JsString(_substring(Onekit_JS.number(indexStart, 0, 0).intValue(), Onekit_JS.number(indexEnd, 0, 0).intValue()));
 	}
 
-	public JsString substring(JsObject_ indexStart) {
+	public JsString substring(JsAny indexStart) {
 		return substring(indexStart, new JsNumber(this.toString().length()));
 	}
 
@@ -434,11 +434,11 @@ public  class JsString implements JsObject_ {
 		return new JsString(String.format("<sup>%s</sup>", this));
 	}
 
-	public JsString toLocaleLowerCase(JsObject_... locale) {
+	public JsString toLocaleLowerCase(JsAny... locale) {
 		return null;
 	}
 
-	public JsString toLocaleUpperCase(JsObject_... locale) {
+	public JsString toLocaleUpperCase(JsAny... locale) {
 		return null;
 	}
 
@@ -501,17 +501,17 @@ public  class JsString implements JsObject_ {
 	}
 
 	@Override
-	public String toLocaleString(JsString locales, JsObject_ options) {
+	public String toLocaleString(JsString locales, JsAny options) {
 		return null;
 	}
 
 	@Override
-	public JsObject_ invoke(JsObject_... params) {
+	public JsAny invoke(JsAny... params) {
 		return null;
 	}
 
 	@Override
-	public JsObject_ get(String key) {
+	public JsAny get(String key) {
 		return null;
 	}
 }

@@ -2,7 +2,7 @@ package cn.onekit.js;
 
 
 public class URIError extends Error {
-    public URIError(JsObject_ message) {
+    public URIError(JsAny message) {
         super(message);
     }
 }

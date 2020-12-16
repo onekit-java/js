@@ -1,8 +1,8 @@
 package cn.onekit.js;
 
-public class Error extends java.lang.Error implements JsObject_ {
+public class Error extends java.lang.Error implements JsAny {
 
-    public Error(JsObject_ message) {
+    public Error(JsAny message) {
         super(message.toString());
     }
     public Error() {
@@ -14,17 +14,17 @@ public class Error extends java.lang.Error implements JsObject_ {
     }
 
     @Override
-    public JsObject_ get(String key) {
+    public JsAny get(String key) {
         return null;
     }
 
     @Override
-    public JsObject_ get(JsObject_ key) {
+    public JsAny get(JsAny key) {
         return null;
     }
 
     @Override
-    public void set(String key, JsObject_ value) {
+    public void set(String key, JsAny value) {
 
     }
 
@@ -35,12 +35,12 @@ public class Error extends java.lang.Error implements JsObject_ {
     }
 
     @Override
-    public String toLocaleString(JsString locales, JsObject_ options) {
+    public String toLocaleString(JsString locales, JsAny options) {
         return null;
     }
 
     @Override
-    public JsObject_ invoke(JsObject_... params) {
+    public JsAny invoke(JsAny... params) {
         return null;
     }
 }

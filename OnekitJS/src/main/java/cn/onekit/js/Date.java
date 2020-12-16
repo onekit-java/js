@@ -3,7 +3,7 @@ package cn.onekit.js;
 import android.icu.text.SimpleDateFormat;
 import java.text.ParsePosition;
 
-public class Date implements JsObject_ {
+public class Date implements JsAny {
 
     private java.util.Date THIS;
 
@@ -19,7 +19,7 @@ public class Date implements JsObject_ {
     public Date() {
         this(new java.util.Date());
     }
-    public Date(JsObject_ value) {
+    public Date(JsAny value) {
         if(value instanceof JsNumber) {
             _Date(((JsNumber)value).THIS.longValue());
         }else if(value instanceof JsString){
@@ -447,15 +447,15 @@ public class Date implements JsObject_ {
         return toLocaleDateString("");
     }
 
-    public JsString toLocaleFormat(JsObject_ formatString) {
+    public JsString toLocaleFormat(JsAny formatString) {
         return new JsString("");
     }
 
-    public JsString toLocaleString(JsObject_ locales, JsObject_ options) {
+    public JsString toLocaleString(JsAny locales, JsAny options) {
         return new JsString("");
     }
 
-    public JsString toLocaleTimeString(JsObject_ locales, JsObject_ options) {
+    public JsString toLocaleTimeString(JsAny locales, JsAny options) {
         return new JsString("");
     }
 
@@ -469,12 +469,12 @@ public class Date implements JsObject_ {
     }
 
     @Override
-    public String toLocaleString(JsString locales, JsObject_ options) {
+    public String toLocaleString(JsString locales, JsAny options) {
         return null;
     }
 
     @Override
-    public JsObject_ invoke(JsObject_... params) {
+    public JsAny invoke(JsAny... params) {
         return null;
     }
 
@@ -491,22 +491,22 @@ public class Date implements JsObject_ {
     }
 
     @Override
-    public JsObject_ get(String key) {
+    public JsAny get(String key) {
         return null;
     }
 
     @Override
-    public JsObject_ get(JsObject_ key) {
+    public JsAny get(JsAny key) {
         return null;
     }
 
     @Override
-    public void set(String key, JsObject_ value) {
+    public void set(String key, JsAny value) {
 
     }
 
     @Override
-    public void set(JsObject_ key, JsObject_ value) {
+    public void set(JsAny key, JsAny value) {
 
     }
 /*

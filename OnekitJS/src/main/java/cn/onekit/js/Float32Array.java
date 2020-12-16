@@ -5,7 +5,7 @@ import cn.onekit.js.core.function;
 public class Float32Array extends TypedArray<Double> {
     public final static JsNumber BYTES_PER_ELEMENT=new JsNumber(4);
     public final static String name="Float32Array";
-    public Float32Array(JsObject_ length) {
+    public Float32Array(JsAny length) {
         super(Float32Array.class,length);
     }
 
@@ -13,11 +13,11 @@ public class Float32Array extends TypedArray<Double> {
         super(typedArray);
     }
 
-    public Float32Array(JsObject_ buffer, JsObject_ byteOffset, JsObject_ length) {
+    public Float32Array(JsAny buffer, JsAny byteOffset, JsAny length) {
         super(Float32Array.class,buffer, byteOffset, length);
     }
 
-    public Float32Array(JsObject_ buffer, JsObject_ byteOffset) {
+    public Float32Array(JsAny buffer, JsAny byteOffset) {
         super(Float32Array.class,buffer, byteOffset);
     }
 
@@ -26,10 +26,10 @@ public class Float32Array extends TypedArray<Double> {
         super(Float32Array.class,array);
     }
     //////////////////////////////////
-    public static  Float32Array from(Set source, function mapFn, JsObject_ thisArg) {
+    public static  Float32Array from(Set source, function mapFn, JsAny thisArg) {
         return _from(Float32Array.class, source, mapFn, thisArg);
     }
-    public static Float32Array of(JsObject_... elements) {
+    public static Float32Array of(JsAny... elements) {
         return _of(Float32Array.class, elements);
     }
 }

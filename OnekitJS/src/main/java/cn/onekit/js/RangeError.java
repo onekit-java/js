@@ -1,7 +1,7 @@
 package cn.onekit.js;
 
 public class RangeError extends Error {
-    public RangeError(JsObject_ message) {
+    public RangeError(JsAny message) {
         super(message);
     }
     public RangeError() {

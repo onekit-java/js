@@ -8,7 +8,7 @@ import cn.onekit.js.core.Iterator;
 import cn.onekit.js.core.Onekit_JS;
 import cn.onekit.js.core.function;
 
-public abstract   class TypedArray<T extends Number> implements Iterable, JsObject_ {
+public abstract   class TypedArray<T extends Number> implements Iterable, JsAny {
 
     private int _byteLength;
     private int _byteOffset;
@@ -39,7 +39,7 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
             if (i > 0) {
                 result.append(",");
             }
-            JsObject_ v = get(i);
+            JsAny v = get(i);
             result.append(v);
         }
         result.append("]");
@@ -56,19 +56,19 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
             }
 
             @Override
-            public JsObject_ next() {
+            public JsAny next() {
                 return get(index++);
             }
         };
     }
     ///////////////////////////////////////////////////
 
-    public JsObject_ get(Integer index) {
+    public JsAny get(Integer index) {
         int size=_BYTES_PER_ELEMENT(getClass());
         return new JsNumber( Onekit_JS.bytes2number(_buffer._data,_name(getClass()).replace("Array",""), size,size*index));
     }
 
-    public void set(JsObject_ index, JsObject_ value) {
+    public void set(JsAny index, JsAny value) {
         _set(Onekit_JS.number(index,0,0).intValue(),this,value);
     }
 
@@ -81,7 +81,7 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
     ////////////////////////////////////////////////////////
 
 
-    public <TA extends TypedArray> TypedArray(Class<TA> clazz, JsObject_ arg) {
+    public <TA extends TypedArray> TypedArray(Class<TA> clazz, JsAny arg) {
         /*if(arg instanceof NUMBER){
             int len=OnekitJS.number(arg,0,0).intValue()* _BYTES_PER_ELEMENT(clazz);
             this(clazz, new ArrayBuffer(new NUMBER(len)),new NUMBER(arg));
@@ -94,12 +94,12 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
         this(typedArray.getClass(),new ArrayBuffer(typedArray.getBuffer()._data.clone()));
     }
 
-    public <TA extends TypedArray> TypedArray(Class<TA> clazz, JsObject_ buffer, JsObject_ byteOffset, JsObject_ length) {
+    public <TA extends TypedArray> TypedArray(Class<TA> clazz, JsAny buffer, JsAny byteOffset, JsAny length) {
         this._byteOffset = Onekit_JS.number(byteOffset,0,0).intValue();
         this._buffer = (ArrayBuffer) buffer;
         this._byteLength = Onekit_JS.number(length,0,0).intValue();
     }
-    public <TA extends TypedArray> TypedArray(Class<TA> clazz, JsObject_ buffer, JsObject_ byteOffset) {
+    public <TA extends TypedArray> TypedArray(Class<TA> clazz, JsAny buffer, JsAny byteOffset) {
         this(clazz, buffer, byteOffset, new JsNumber(((JsNumber)((ArrayBuffer)buffer).getByteLength()).THIS.intValue() - ((JsNumber)byteOffset).THIS.intValue()));
     }
 
@@ -136,7 +136,7 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
         int size = _BYTES_PER_ELEMENT(this.getClass());
         return new JsNumber(getByteLength().THIS.intValue() / size);
     }
-    private static JsObject_ _fix(Class clazz, JsObject_ flag){
+    private static JsAny _fix(Class clazz, JsAny flag){
         if(flag.equals(Double.NaN)) {
             return new JsNumber(0.0);
         }
@@ -162,7 +162,7 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
         }
         return new JsNumber(value);
     }
-    public static <TA extends TypedArray> void _set(int index, TA typedArray, JsObject_ flag) {
+    public static <TA extends TypedArray> void _set(int index, TA typedArray, JsAny flag) {
         Class clazz = typedArray.getClass();
 
 
@@ -170,7 +170,7 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
         Onekit_JS.number2bytes(typedArray._buffer._data,_name(clazz).replace("Array",""),size ,index*size, _fix(clazz,flag));
     }
 
-    protected static <TA extends TypedArray>  TA _from(Class<TA> clazz, JsObject_ source, JsObject_ fn, JsObject_ thisArg) {
+    protected static <TA extends TypedArray>  TA _from(Class<TA> clazz, JsAny source, JsAny fn, JsAny thisArg) {
         function mapFn = (function)fn;
         if(source instanceof Set) {
             return _from(clazz,(Set)source, mapFn, thisArg);
@@ -182,14 +182,14 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
             return null;
         }
     }
-    private static <TA extends TypedArray> TA _from(Class<TA> clazz, Set source, function mapFn, JsObject_ thisArg) {
+    private static <TA extends TypedArray> TA _from(Class<TA> clazz, Set source, function mapFn, JsAny thisArg) {
         try {
 
             ArrayBuffer buffer = new ArrayBuffer(new JsNumber(source.getSize() * _BYTES_PER_ELEMENT(clazz)));
             TA result = clazz.getConstructor(ArrayBuffer.class).newInstance(buffer);
             int i = 0;
-            for (JsObject_ element : source) {
-                JsObject_ flag;
+            for (JsAny element : source) {
+                JsAny flag;
                 if (mapFn != null) {
                     flag = mapFn.invoke(element);
                 } else  {
@@ -205,15 +205,15 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
         }
     }
 
-    private static <TA extends TypedArray>  TA _from(Class<TA> clazz, JsArray source, function mapFn, JsObject_ thisArg) {
+    private static <TA extends TypedArray>  TA _from(Class<TA> clazz, JsArray source, function mapFn, JsAny thisArg) {
         return _from(clazz, new Set(source),mapFn,thisArg);
     }
-    private static <TA extends TypedArray>  TA _from(Class<TA> clazz, JsString source, function mapFn, JsObject_ thisArg) {
+    private static <TA extends TypedArray>  TA _from(Class<TA> clazz, JsString source, function mapFn, JsAny thisArg) {
   JsArray array = Onekit_JS.string2Array(source.THIS);
     return _from(clazz, new Set(array),mapFn,thisArg);
     }
 
-    public static < TA extends TypedArray> TA _of(Class<TA> clazz, JsObject_... elements) {
+    public static < TA extends TypedArray> TA _of(Class<TA> clazz, JsAny... elements) {
         try {
 
             ArrayBuffer buffer = new ArrayBuffer(new JsNumber(elements==null?1:elements.length * _BYTES_PER_ELEMENT(clazz)));
@@ -224,7 +224,7 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
             } else {
                 result._buffer = new ArrayBuffer(new JsNumber(elements.length * result._BYTES_PER_ELEMENT(clazz)));
                 for (int i = 0; i < elements.length; i++) {
-                    JsObject_ element = elements[i];
+                    JsAny element = elements[i];
                     if(element==null){
                         element=new JsNumber(0);
                     }
@@ -240,7 +240,7 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
 
 
     ////////////////////////////////////////////////////
-    public <TA extends TypedArray> TA copyWithin(JsObject_ target, JsObject_ start, JsObject_ end) {
+    public <TA extends TypedArray> TA copyWithin(JsAny target, JsAny start, JsAny end) {
         if(end==null){
             end =  this.getLength();
         }
@@ -248,7 +248,7 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
         int s = Onekit_JS.number(start,0,0).intValue();
         int e = Onekit_JS.number(end,0,0).intValue();
         for (int i = s, j = t; i < e && i<getLength().THIS.intValue() && j<getLength().THIS.intValue(); i++, j++) {
-            JsObject_ element = get(i);
+            JsAny element = get(i);
             set(new JsNumber(j), element);
         }
         return (TA) this;
@@ -264,7 +264,7 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
             }
 
             @Override
-            public JsObject_ next() {
+            public JsAny next() {
                 return get(index++);
             }
         }) {
@@ -274,16 +274,16 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
             public JsArray getValue(Object value) {
                 return new JsArray() {{
                     add(new JsNumber(i++));
-                    add((JsObject_) value);
+                    add((JsAny) value);
                 }};
             }
         };
     }
 
-        public JsBoolean every(function callback, JsObject_ thisArg)  {
+        public JsBoolean every(function callback, JsAny thisArg)  {
             callback.thisArg = thisArg;
             for (int i = 0; i < getLength().THIS.intValue(); i++) {
-                JsObject_ element = get(i);
+                JsAny element = get(i);
                 if (element == null) {
                     continue;
                 }
@@ -300,7 +300,7 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
         }
 
         //
-        <TA extends TypedArray> TA _fill(JsObject_ value, int start, int end) {
+        <TA extends TypedArray> TA _fill(JsAny value, int start, int end) {
             start = _index(this, start);
             end = _index(this, end);
             for (int i = start; i >= 0 && i < end && i < getLength().THIS.intValue(); i++) {
@@ -309,26 +309,26 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
             return (TA) this;
         }
 
-        public <TA extends TypedArray> TA fill(JsObject_ value, JsObject_ start, JsObject_ end) {
+        public <TA extends TypedArray> TA fill(JsAny value, JsAny start, JsAny end) {
             int start_ = Onekit_JS.number(start, 0, 0).intValue();
             int end_ = Onekit_JS.number(end, 0, 0).intValue();
             return _fill(value, start_, end_);
         }
 
-        public <TA extends TypedArray> TA fill(JsObject_ value, JsObject_ start) {
+        public <TA extends TypedArray> TA fill(JsAny value, JsAny start) {
             return fill(value, start, new JsNumber(getLength()));
         }
 
-        public <TA extends TypedArray> TA fill(JsObject_ value) {
+        public <TA extends TypedArray> TA fill(JsAny value) {
             return fill(value,  new JsNumber(0));
         }
 
-        public <TA extends TypedArray>  TA filter(function callback, JsObject_ thisArg) {
+        public <TA extends TypedArray>  TA filter(function callback, JsAny thisArg) {
 
             callback.thisArg = thisArg;
             JsArray array = new JsArray();
             for (int i = 0; i < getLength().THIS.intValue(); i++) {
-                JsObject_ element = this.get(i);
+                JsAny element = this.get(i);
                 if (element == null) {
                     continue;
                 }
@@ -344,10 +344,10 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
             return filter(callback, null);
         }
 
-        public JsObject_ find(function callback, JsObject_ thisArg) {
+        public JsAny find(function callback, JsAny thisArg) {
             callback.thisArg = thisArg;
             for (int i = 0; i < getLength().THIS.intValue(); i++) {
-                JsObject_ element = this.get(i);
+                JsAny element = this.get(i);
                 if (Onekit_JS.is(callback.invoke(element, new JsNumber(i), this))) {
                     return element;
                 }
@@ -355,14 +355,14 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
             return null;
         }
 
-        public JsObject_ find(function callback) {
+        public JsAny find(function callback) {
             return find(callback, null);
         }
 
-        public JsNumber findIndex(function callback, JsObject_ thisArg) {
+        public JsNumber findIndex(function callback, JsAny thisArg) {
             callback.thisArg = thisArg;
             for (int i = 0; i < getLength().THIS.intValue(); i++) {
-                JsObject_ element = this.get(i);
+                JsAny element = this.get(i);
                 if (element == null) {
                     continue;
                 }
@@ -377,10 +377,10 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
             return findIndex(callback, null);
         }
 
-        public  void forEach(function callback, JsObject_ thisArg) {
+        public  void forEach(function callback, JsAny thisArg) {
             callback.thisArg = thisArg;
             for (int i = 0; i < getLength().THIS.intValue(); i++) {
-                JsObject_ element = this.get(i);
+                JsAny element = this.get(i);
                 if (element == null) {
                     continue;
                 }
@@ -394,7 +394,7 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
         }
 
         //
-        public JsBoolean includes(JsObject_ valueToFind, JsObject_ index) {
+        public JsBoolean includes(JsAny valueToFind, JsAny index) {
         int idx = Onekit_JS.number(index,0,0).intValue();
             double target;
             if (Onekit_JS.isNumber(valueToFind)) {
@@ -412,12 +412,12 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
             return  new JsBoolean( false);
         }
 
-        public JsBoolean includes(JsObject_ valueToFind) {
+        public JsBoolean includes(JsAny valueToFind) {
             return includes(valueToFind, new JsNumber(0));
         }
 
         //
-        public JsNumber indexOf(JsObject_ searchElement, int fromIndex) {
+        public JsNumber indexOf(JsAny searchElement, int fromIndex) {
             double target;
             if(Onekit_JS.isNumber(searchElement)){
                 target = Onekit_JS.number(searchElement,0,0).doubleValue();
@@ -434,7 +434,7 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
             return  new JsNumber( -1);
         }
 
-        public JsNumber indexOf(JsObject_ searchElement) {
+        public JsNumber indexOf(JsAny searchElement) {
             return indexOf(searchElement, 0);
         }
 
@@ -450,7 +450,7 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
             return result.toString();
         }
 
-        public JsString join(JsObject_ separator) {
+        public JsString join(JsAny separator) {
             if (separator == null) {
                 separator = new JsString(",");
             }
@@ -467,7 +467,7 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
                 }
 
                 @Override
-                public JsObject_ next() {
+                public JsAny next() {
                     return get(index++);
                 }
             }) {
@@ -480,7 +480,7 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
             };
         }
 
-        public JsNumber lastIndexOf(JsObject_ searchElement, JsNumber fromIndex) {
+        public JsNumber lastIndexOf(JsAny searchElement, JsNumber fromIndex) {
             if (fromIndex == null) {
                 fromIndex = new JsNumber(getLength().THIS.intValue() - 1);
             }
@@ -502,20 +502,20 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
 
 
         //
-        public <TA extends TypedArray>  TA map(function callback, JsObject_ thisArg) {
+        public <TA extends TypedArray>  TA map(function callback, JsAny thisArg) {
             callback.thisArg = thisArg;
             JsArray array = new JsArray();
             for (int i = 0; i < getLength().THIS.intValue(); i++) {
-                JsObject_ element = this.get(i);
+                JsAny element = this.get(i);
                 if (element == null) {
                     continue;
                 }
                 Class<TA> clazz = (Class<TA>)getClass();
-                JsObject_ item = callback.invoke(element);
+                JsAny item = callback.invoke(element);
                 array.add(_fix(clazz,item));
             }
             Class<TA> clazz = (Class<TA>) getClass();
-            return TA._of(clazz, array.toArray(new JsObject_[0]));
+            return TA._of(clazz, array.toArray(new JsAny[0]));
         }
 
         public <TA extends TypedArray> TA map(function callback) {
@@ -523,12 +523,12 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
         }
 
 
-        public JsObject_ reduce(function callback, JsObject_ initialValue) {
+        public JsAny reduce(function callback, JsAny initialValue) {
             if (initialValue == null) {
                 initialValue =  get(0);
             }
             for (int i = 0; i < getLength().THIS.intValue(); i++) {
-                JsObject_ element = this.get(i);
+                JsAny element = this.get(i);
                 if (element == null) {
                     continue;
                 }
@@ -537,16 +537,16 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
             return initialValue;
         }
 
-        public JsObject_ reduce(function callback) {
+        public JsAny reduce(function callback) {
             return reduce(callback, null);
         }
 
-        public JsObject_ reduceRight(function callback, JsObject_ initialValue) {
+        public JsAny reduceRight(function callback, JsAny initialValue) {
             if (initialValue == null) {
                 initialValue =  get(0);
             }
             for (int i = getLength().THIS.intValue() - 1; i >= 0; i--) {
-                JsObject_ element = this.get(i);
+                JsAny element = this.get(i);
                 if (element == null) {
                     continue;
                 }
@@ -555,7 +555,7 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
             return initialValue;
         }
 
-        public JsObject_ reduceRight(function callback) {
+        public JsAny reduceRight(function callback) {
             return reduceRight(callback, null);
         }
 
@@ -571,13 +571,13 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
             return (TA) this;
         }
 
-    public void set(JsArray array, JsObject_ offset) {
+    public void set(JsArray array, JsAny offset) {
         int o = Onekit_JS.number(offset,0,0).intValue();
         for (int i = 0, j = o; i < array.size(); i++, j++) {
             set(new JsNumber(j), array.get(i));
         }
     }
-    public void set(TypedArray typedArray, JsObject_ offset) {
+    public void set(TypedArray typedArray, JsAny offset) {
         int o = Onekit_JS.number(offset,0,0).intValue();
         for (int i = 0, j = o; i < typedArray.getLength().THIS.intValue(); i++, j++) {
             set(new JsNumber(j), typedArray.get(i));
@@ -595,13 +595,13 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
         return TA._of(clazz, array);
     }
 
-    public <TA extends TypedArray> TA slice(JsObject_ start, JsObject_ end) {
+    public <TA extends TypedArray> TA slice(JsAny start, JsAny end) {
         int start_ = Onekit_JS.number(start, 0, 0).intValue();
         int end_ = Onekit_JS.number(end, 0, 0).intValue();
         return _slice(start_, end_);
     }
 
-    public <TA extends TypedArray> TA slice(JsObject_ start) {
+    public <TA extends TypedArray> TA slice(JsAny start) {
         return slice(start, new JsNumber(getLength()) );
     }
 
@@ -609,9 +609,9 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
         return slice(new JsNumber(0));
     }
 
-    public JsBoolean some(function callback, JsObject_ thisArg) {
+    public JsBoolean some(function callback, JsAny thisArg) {
         for (int i = 0; i < getLength().THIS.intValue(); i++) {
-            JsObject_ element = this.get(i);
+            JsAny element = this.get(i);
             if (element == null) {
                 continue;
             }
@@ -630,7 +630,7 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
         Collections.sort(array, new Comparator() {
             @Override
             public int compare(Object o1, Object o2) {
-                return ((JsNumber)compareFunction.invoke((JsObject_) o1, (JsObject_) o2)).THIS.intValue();
+                return ((JsNumber)compareFunction.invoke((JsAny) o1, (JsAny) o2)).THIS.intValue();
             }
         });
         for (int i = 0; i < array.size(); i++) {
@@ -642,7 +642,7 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
     public  <TA extends TypedArray> TA sort() {
         return sort(new function() {
             @Override
-            public JsObject_ invoke(JsObject_... arguments) {
+            public JsAny invoke(JsAny... arguments) {
                 Double v1 = Onekit_JS.number(arguments[0],0,0).doubleValue();
                 Double v2 =  Onekit_JS.number(arguments[1],0,0).doubleValue();
                 return new JsNumber(v1.compareTo(v2));
@@ -668,7 +668,7 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
     public JsString toLocaleString(JsString locales, JsObject options) {
         StringBuilder result = new StringBuilder();
         for (int i = 0; i <getLength().THIS.intValue(); i++) {
-            JsObject_ element = this.get(i);
+            JsAny element = this.get(i);
             if (i > 0) {
                 result.append(",");
             }
@@ -686,15 +686,15 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
     public  Iterator values() {
         return new Iterator(this.iterator()) {
             @Override
-            public JsObject_ getValue(Object value) {
-                return (JsObject_) value;
+            public JsAny getValue(Object value) {
+                return (JsAny) value;
             }
 
         };
     }
 
     @Override
-    public JsObject_ get(JsObject_ key) {
+    public JsAny get(JsAny key) {
         return null;
     }
 
@@ -704,21 +704,21 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsObje
     }
 
     @Override
-    public String toLocaleString(JsString locales, JsObject_ options) {
+    public String toLocaleString(JsString locales, JsAny options) {
         return null;
     }
 
     @Override
-    public JsObject_ invoke(JsObject_... params) {
+    public JsAny invoke(JsAny... params) {
         return null;
     }
     @Override
-    public JsObject_ get(String key) {
+    public JsAny get(String key) {
         return null;
     }
 
     @Override
-    public void set(String key, JsObject_ value) {
+    public void set(String key, JsAny value) {
 
     }
 }

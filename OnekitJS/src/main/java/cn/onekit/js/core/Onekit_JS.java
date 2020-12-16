@@ -6,7 +6,7 @@ import java.math.BigInteger;
 
 import cn.onekit.js.JsBoolean;
 import cn.onekit.js.JsNumber;
-import cn.onekit.js.JsObject_;
+import cn.onekit.js.JsAny;
 import cn.onekit.js.JsString;
 import cn.onekit.thekit.Android;
 import cn.onekit.core.OneKit;
@@ -103,7 +103,7 @@ public class Onekit_JS {
         }
     }
 
-    public static boolean isNumber(JsObject_ v) {
+    public static boolean isNumber(JsAny v) {
         /*if (v == null) {
             return false;
         }
@@ -175,7 +175,7 @@ public class Onekit_JS {
         }
     }
 
-    public static Number number(JsObject_ value, Object nullValue, Object nanValue) {
+    public static Number number(JsAny value, Object nullValue, Object nanValue) {
         if (value == null) {
             return (Number) nullValue;
         }
@@ -189,8 +189,8 @@ public class Onekit_JS {
         if (value == null) {
             return "undefined";
         }
-        if (value instanceof String) {
-            return String.format("\"%s\"", value);
+        if (value instanceof JsAny) {
+            return ((JsAny) value).ToString().THIS;
         } else {
             return value.toString();
         }
@@ -245,7 +245,7 @@ public class Onekit_JS {
         return result;
     }
 
-    public static void number2bytes(byte[] data, String name, int size, int byteOffset, JsObject_ v) {
+    public static void number2bytes(byte[] data, String name, int size, int byteOffset, JsAny v) {
         Number value = ((JsNumber) v).THIS;
         long number;
         switch (name) {
@@ -314,7 +314,7 @@ public class Onekit_JS {
         return true;
     }
 
-    public static JsObject_ or(JsObject_ object1, JsObject_ object2) {
+    public static JsAny or(JsAny object1, JsAny object2) {
         return object1 != null ? object1 : object2;
     }
 /*
@@ -339,22 +339,22 @@ public class Onekit_JS {
         }
     }
 
-    public static JsObject_ plus(JsObject_ a, JsObject_ b) {
+    public static JsAny plus(JsAny a, JsAny b) {
         if (Onekit_JS.isNumber(a) && Onekit_JS.isNumber(b)) {
             return new JsNumber(((JsNumber) a).THIS.doubleValue() + ((JsNumber) b).THIS.doubleValue());
         } else {
             return new JsString(a.toString() + b.toString());
         }
     }
-    public static JsObject_ subtract(JsObject_ a, JsObject_ b) {
+    public static JsAny subtract(JsAny a, JsAny b) {
             return new JsNumber(((JsNumber) a).THIS.doubleValue() - ((JsNumber) b).THIS.doubleValue());
 
     }
-    public static JsObject_ multiply(JsObject_ a, JsObject_ b) {
+    public static JsAny multiply(JsAny a, JsAny b) {
         return new JsNumber(((JsNumber) a).THIS.doubleValue() * ((JsNumber) b).THIS.doubleValue());
 
     }
-    public static JsObject_ divide(JsObject_ a, JsObject_ b) {
+    public static JsAny divide(JsAny a, JsAny b) {
         return new JsNumber(((JsNumber) a).THIS.doubleValue() / ((JsNumber) b).THIS.doubleValue());
 
     }

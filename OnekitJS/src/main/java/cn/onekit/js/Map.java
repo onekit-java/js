@@ -5,10 +5,10 @@ import java.util.HashMap;
 import cn.onekit.js.core.Iterator;
 import cn.onekit.js.core.function;
 
-public class Map implements JsObject_ {
+public class Map implements JsAny {
 
 
-    private java.util.Map<JsObject_, JsObject_> _THIS = new HashMap<>();
+    private java.util.Map<JsAny, JsAny> _THIS = new HashMap<>();
 
     public int getSize() {
         return _THIS.size();
@@ -19,8 +19,8 @@ public class Map implements JsObject_ {
         _THIS.clear();
     }
 
-    public boolean delete(JsObject_ key) {
-        for (JsObject.Entry<JsObject_, JsObject_> entry :_THIS.entrySet()){
+    public boolean delete(JsAny key) {
+        for (JsObject.Entry<JsAny, JsAny> entry :_THIS.entrySet()){
             if(entry.getKey().hashCode()==key.hashCode()){
                 _THIS.remove(entry.getKey());
                 return true;
@@ -34,15 +34,15 @@ public class Map implements JsObject_ {
 
             @Override
             public Object getValue(Object value) {
-                JsObject.Entry<JsObject_, JsObject_> entry= (JsObject.Entry) value;
+                JsObject.Entry<JsAny, JsAny> entry= (JsObject.Entry) value;
                 return new JsArray(){{add(entry.getKey());add(entry.getValue());}};
             }
         };
     }
 
-    public   void forEach(function callback, JsObject_ thisArg) {
+    public   void forEach(function callback, JsAny thisArg) {
         callback.thisArg = thisArg;
-        for (JsObject.Entry<JsObject_, JsObject_> entry : _THIS.entrySet()) {
+        for (JsObject.Entry<JsAny, JsAny> entry : _THIS.entrySet()) {
             callback.invoke(entry.getValue(), entry.getKey(), this);
         }
     }
@@ -51,20 +51,20 @@ public class Map implements JsObject_ {
     }
 
     @Override
-    public JsObject_ get(String key) {
+    public JsAny get(String key) {
         return null;
     }
 
-    public JsObject_ get(JsObject_ key) {
+    public JsAny get(JsAny key) {
         return _THIS.get(key);
     }
 
     @Override
-    public void set(String key, JsObject_ value) {
+    public void set(String key, JsAny value) {
 
     }
 
-    public JsBoolean has(JsObject_ key) {
+    public JsBoolean has(JsAny key) {
          for (JsObject.Entry entry :_THIS.entrySet()){
              if(entry.getKey().hashCode()==key.hashCode()){
                  return new JsBoolean(true);
@@ -74,17 +74,17 @@ public class Map implements JsObject_ {
     }
 
     public Iterator keys() {
-        return new Iterator<JsObject_>(_THIS.entrySet().iterator()) {
+        return new Iterator<JsAny>(_THIS.entrySet().iterator()) {
 
             @Override
-            public JsObject_ getValue(Object value) {
-                JsObject.Entry<JsObject_, JsObject_> entry = (JsObject.Entry<JsObject_, JsObject_>) value;
+            public JsAny getValue(Object value) {
+                JsObject.Entry<JsAny, JsAny> entry = (JsObject.Entry<JsAny, JsAny>) value;
                 return entry.getKey();
             }
         };
     }
 
-    public void set(JsObject_ key, JsObject_ value) {
+    public void set(JsAny key, JsAny value) {
         _THIS.put(key ,value);
     }
 
@@ -94,12 +94,12 @@ public class Map implements JsObject_ {
     }
 
     @Override
-    public String toLocaleString(JsString locales, JsObject_ options) {
+    public String toLocaleString(JsString locales, JsAny options) {
         return null;
     }
 
     @Override
-    public JsObject_ invoke(JsObject_... params) {
+    public JsAny invoke(JsAny... params) {
         return null;
     }
 
@@ -108,8 +108,8 @@ public class Map implements JsObject_ {
 
 
             @Override
-            public JsObject_ getValue(Object value) {
-                JsObject.Entry<JsObject_, JsObject_> entry = (JsObject.Entry<JsObject_, JsObject_> ) value;
+            public JsAny getValue(Object value) {
+                JsObject.Entry<JsAny, JsAny> entry = (JsObject.Entry<JsAny, JsAny> ) value;
                 return entry.getValue();
             }
         };

@@ -16,7 +16,7 @@ public class TypeError extends Error {
     }
 
     @Override
-    public JsObject_ get(JsObject_ key) {
+    public JsAny get(JsAny key) {
         return null;
     }
 }

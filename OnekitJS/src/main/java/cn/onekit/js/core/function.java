@@ -2,18 +2,18 @@ package cn.onekit.js.core;
 
 import java.lang.reflect.Method;
 
-import cn.onekit.js.JsObject_;
+import cn.onekit.js.JsAny;
 import cn.onekit.js.JsString;
 
-public  class function implements JsObject_ {
-     JsObject_ obj;
+public  class function implements JsAny {
+     JsAny obj;
      Method method;
-     public JsObject_ thisArg;
+     public JsAny thisArg;
      public function(){
 
      }
 
-     public function(Class clazz, String methodName, Class<JsObject_>... types) {
+     public function(Class clazz, String methodName, Class<JsAny>... types) {
           try {
                method = clazz.getMethod(methodName,types);
           } catch (NoSuchMethodException e) {
@@ -21,13 +21,13 @@ public  class function implements JsObject_ {
           }
      }
 
-     public function(JsObject_ obj, String methodName, Class<JsObject_>... types) {
+     public function(JsAny obj, String methodName, Class<JsAny>... types) {
           this(obj.getClass(), methodName,types);
           this.obj = obj;
      }
-     public JsObject_ invoke(Object... arguments) {
+     public JsAny invoke(JsAny... arguments) {
           try{
-               return (JsObject_) method.invoke(obj, arguments);
+               return (JsAny) method.invoke(obj, arguments);
           } catch (Exception e) {
                e.printStackTrace();
                return null;
@@ -35,22 +35,22 @@ public  class function implements JsObject_ {
      }
 
      @Override
-     public JsObject_ get(String key) {
+     public JsAny get(String key) {
           return null;
      }
 
      @Override
-     public JsObject_ get(JsObject_ key) {
+     public JsAny get(JsAny key) {
           return null;
      }
 
      @Override
-     public void set(String key, JsObject_ value) {
+     public void set(String key, JsAny value) {
 
      }
 
      @Override
-     public void set(JsObject_ key, JsObject_ value) {
+     public void set(JsAny key, JsAny value) {
 
      }
 
@@ -60,7 +60,7 @@ public  class function implements JsObject_ {
      }
 
      @Override
-     public String toLocaleString(JsString locales, JsObject_ options) {
+     public String toLocaleString(JsString locales, JsAny options) {
           return null;
      }
 }
