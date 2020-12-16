@@ -121,8 +121,9 @@ public class Promise implements JsAny {
 
     @Override
     public JsString ToString() {
-        return null;
+        return new JsString("Promise");
     }
+
 
     @Override
     public String toLocaleString(JsString locales, JsAny options) {

@@ -1,5 +1,6 @@
 package cn.onekit.js;
 
+import cn.onekit.js.core.JsAny;
 import cn.onekit.js.core.Onekit_JS;
 
 public class Math implements JsAny {
@@ -285,9 +286,6 @@ public class Math implements JsAny {
         return new JsNumber(java.lang.Math.tan(number));
     }
 
-    public static JsString toSource() {
-        return new JsString("Math");
-    }
     public static JsNumber tanh(JsAny v) {
         if (v == null) {
             return JsNumber.NaN;
@@ -331,8 +329,9 @@ public class Math implements JsAny {
 
     @Override
     public JsString ToString() {
-        return null;
+        return new JsString("Math");
     }
+
 
     @Override
     public String toLocaleString(JsString locales, JsAny options) {

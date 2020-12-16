@@ -1,5 +1,7 @@
 package cn.onekit.js;
 
+import cn.onekit.js.core.JsAny;
+
 public class WeakMap implements JsAny {
 ///////////////////////
     public boolean delete(String key){
@@ -34,8 +36,9 @@ public class WeakMap implements JsAny {
 
     @Override
     public JsString ToString() {
-        return null;
+        return new JsString("WeakMap");
     }
+
 
     @Override
     public String toLocaleString(JsString locales, JsAny options) {

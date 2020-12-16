@@ -1,6 +1,11 @@
-package cn.onekit.js;
+package cn.onekit.js.core;
 
 import java.lang.reflect.Field;
+
+import cn.onekit.js.JSON;
+import cn.onekit.js.JsNumber;
+import cn.onekit.js.JsObject;
+import cn.onekit.js.JsString;
 
 public interface JsAny {
     default JsAny get(String key){
@@ -107,7 +112,9 @@ public interface JsAny {
         }
     }
 */
-     JsString ToString();/*{
+
+   JsString ToString();
+ /*{
         Class clazz = this.getClass();
         StringBuilder result = new StringBuilder();
         result.append("{");

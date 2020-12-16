@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import cn.onekit.js.core.JsAny;
+
 
 public class Symbol implements JsAny {
 
@@ -70,8 +72,9 @@ public class Symbol implements JsAny {
 
     @Override
     public JsString ToString() {
-        return null;
+        return new JsString("Symbol");
     }
+
 
     @Override
     public String toLocaleString(JsString locales, JsAny options) {

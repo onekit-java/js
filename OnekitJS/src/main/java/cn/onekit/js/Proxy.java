@@ -1,5 +1,7 @@
 package cn.onekit.js;
 
+import cn.onekit.js.core.JsAny;
+
 public class Proxy implements JsAny {
     public static JsObject apply(String target, JsObject thisArg, JsObject argumentsList){
         return null;
@@ -63,8 +65,9 @@ public class Proxy implements JsAny {
 
     @Override
     public JsString ToString() {
-        return null;
+        return new JsString("Proxy");
     }
+
 
     @Override
     public String toLocaleString(JsString locales, JsAny options) {

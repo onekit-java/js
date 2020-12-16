@@ -1,5 +1,6 @@
 package cn.onekit.js;
 
+import cn.onekit.js.core.JsAny;
 import cn.onekit.js.core.Onekit_JS;
 
 public class JsNumber implements JsAny {
@@ -143,7 +144,10 @@ public class JsNumber implements JsAny {
     public JsString valueOf(){
         return new JsString("");
     }
-
+    @Override
+    public JsString ToString() {
+        return ToString(null);
+    }
     public JsString ToString(JsAny radix) {
         int r = Onekit_JS.number(radix,10,10).intValue();
         if(THIS instanceof Integer){
@@ -187,10 +191,7 @@ public class JsNumber implements JsAny {
 
     }
 
-    @Override
-    public JsString ToString() {
-        return null;
-    }
+
 
     @Override
     public String toLocaleString(JsString locales, JsAny options) {

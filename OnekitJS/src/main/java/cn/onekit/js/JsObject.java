@@ -3,6 +3,7 @@ package cn.onekit.js;
 import java.util.HashMap;
 import java.util.Random;
 import cn.onekit.js.core.Iterator;
+import cn.onekit.js.core.JsAny;
 import cn.onekit.js.core.Onekit_JS;
 
 public class JsObject extends HashMap<String, JsAny> implements JsAny {
@@ -67,22 +68,6 @@ public class JsObject extends HashMap<String, JsAny> implements JsAny {
         return result;
     }
 
-
-    @Override
-    public String toString() {
-        StringBuilder result = new StringBuilder();
-        result.append("{");
-        String[] keys = this.keySet().toArray(new String[]{});
-        for (int i = 0; i < keys.length; i++) {
-            String key = keys[i];
-            if (i > 0) {
-                result.append(",");
-            }
-            result.append(String.format("\"%s\":%s", key, Onekit_JS.toString(this.get(key))));
-        }
-        result.append("}");
-        return result.toString();
-    }
     public JsString toLocaleString(JsAny locales, JsAny options){
         return new JsString("");
     }
@@ -107,7 +92,7 @@ public class JsObject extends HashMap<String, JsAny> implements JsAny {
 
     @Override
     public JsString ToString() {
-        return null;
+        return JSON.stringify(this);
     }
 
     @Override

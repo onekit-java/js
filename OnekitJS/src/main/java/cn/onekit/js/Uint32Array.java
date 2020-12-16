@@ -1,4 +1,5 @@
 package cn.onekit.js;
+import cn.onekit.js.core.JsAny;
 import cn.onekit.js.core.function;
 
 public class Uint32Array extends TypedArray{

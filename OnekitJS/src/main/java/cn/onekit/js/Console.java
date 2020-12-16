@@ -4,6 +4,7 @@ import android.util.Log;
 
 import java.util.Random;
 
+import cn.onekit.js.core.JsAny;
 import cn.onekit.js.core.Onekit_JS;
 
 public class Console implements JsAny {
@@ -11,7 +12,7 @@ public class Console implements JsAny {
         StringBuilder str = new StringBuilder(" \r\n");
         for (int i=0;i<data.length;i++) {
             JsAny item = data[i];
-            str.append(String.format("%s\t", Onekit_JS.toString(item)));
+            str.append(String.format("%s\t", JSON.stringify(item)));
         }
         return str.toString();
     }
@@ -42,8 +43,9 @@ public class Console implements JsAny {
         Log.w("[OneKit]==============="+ new Random().nextInt(), _run(warns));
     }
 
+
     @Override
     public JsString ToString() {
-        return null;
+        return new JsString("Console");
     }
 }

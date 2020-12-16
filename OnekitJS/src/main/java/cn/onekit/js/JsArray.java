@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Random;
 
 import cn.onekit.js.core.Iterator;
+import cn.onekit.js.core.JsAny;
 import cn.onekit.js.core.Onekit_JS;
 import cn.onekit.js.core.function;
 
@@ -52,22 +53,6 @@ public class JsArray extends ArrayList<JsAny> implements JsAny {
             return index;
         }
         return array.size() + index;
-    }
-
-    public JsString ToString() {
-
-        StringBuilder result = new StringBuilder();
-        result.append("[");
-        for (int i = 0; i < size(); i++) {
-            JsAny element = get(i);
-            if (i > 0) {
-                result.append(",");
-            }
-            result.append(element == null ? "empty" : Onekit_JS.toString(element));
-
-        }
-        result.append("]");
-        return new JsString(result.toString());
     }
 
     @Override
@@ -662,5 +647,10 @@ public class JsArray extends ArrayList<JsAny> implements JsAny {
     public void set(JsAny key, JsAny value) {
         int index = Onekit_JS.number(key, 0, 0).intValue();
         set(index, value);
+    }
+
+    @Override
+    public JsString ToString() {
+        return JSON.stringify(this);
     }
 }

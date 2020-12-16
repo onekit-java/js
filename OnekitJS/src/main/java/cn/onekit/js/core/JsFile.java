@@ -15,13 +15,13 @@ import java.util.TimerTask;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import cn.onekit.js.JSON;
 import cn.onekit.js.JsArray;
 import cn.onekit.js.Console;
 import cn.onekit.js.JsObject;
 import cn.onekit.js.Error;
 import cn.onekit.js.JsBoolean;
 import cn.onekit.js.JsNumber;
-import cn.onekit.js.JsAny;
 import cn.onekit.js.JsString;
 import cn.onekit.js.Map;
 import cn.onekit.js.Null;
@@ -57,9 +57,9 @@ public interface JsFile {
     }
     /////////////////////////////////////
     default String onekit_$(String format, JsObject args) {
-        for (JsObject.Entry entry : args.entrySet()) {
+        for (JsObject.Entry<String,JsAny> entry : args.entrySet()) {
             String str = String.format("${%s}", entry.getKey());
-            format = format.replace(str, Onekit_JS.toString(entry.getValue()));
+            format = format.replace(str, JSON.stringify(entry.getValue()).THIS);
         }
         return format;
     }

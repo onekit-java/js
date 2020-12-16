@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import cn.onekit.js.core.JsAny;
 import cn.onekit.js.core.Onekit_JS;
 
 public class Intl  {
@@ -48,10 +49,7 @@ public class Intl  {
 
 
 
-        @Override
-        public JsString ToString() {
-            return null;
-        }
+
 
         @Override
         public String toLocaleString(JsString locales, JsAny options) {
@@ -135,10 +133,7 @@ public class Intl  {
 
             }
 
-            @Override
-            public JsString ToString() {
-                return null;
-            }
+
 
             @Override
             public String toLocaleString(JsString locales, JsAny options) {
@@ -299,10 +294,7 @@ private String _region;
 
         }
 
-        @Override
-        public JsString ToString() {
-            return null;
-        }
+
 
         @Override
         public String toLocaleString(JsString locales, JsAny options) {
@@ -523,10 +515,7 @@ private String _region;
 
             }
 
-            @Override
-            public JsString ToString() {
-                return null;
-            }
+
 
             @Override
             public String toLocaleString(JsString locales, JsAny options) {
@@ -609,10 +598,7 @@ private String _region;
 
         }
 
-        @Override
-        public JsString ToString() {
-            return null;
-        }
+
 
         @Override
         public String toLocaleString(JsString locales, JsAny options) {
@@ -672,10 +658,7 @@ private String _region;
 
             }
 
-            @Override
-            public JsString ToString() {
-                return null;
-            }
+
 
             @Override
             public String toLocaleString(JsString locales, JsAny options) {
@@ -752,10 +735,7 @@ this(locales,new JsObject());
 
         }
 
-        @Override
-        public JsString ToString() {
-            return null;
-        }
+
 
         @Override
         public String toLocaleString(JsString locales, JsAny options) {
@@ -891,10 +871,7 @@ this(locales,new JsObject());
 
             }
 
-            @Override
-            public JsString ToString() {
-                return null;
-            }
+
 
             @Override
             public String toLocaleString(JsString locales, JsAny options) {
@@ -960,10 +937,7 @@ this(new JsArray(){{add(new JsString(locales));}},options);
 
         }
 
-        @Override
-        public JsString ToString() {
-            return null;
-        }
+
 
         @Override
         public String toLocaleString(JsString locales, JsAny options) {
@@ -1017,10 +991,7 @@ this(new JsArray(){{add(new JsString(locales));}},options);
 
         }
 
-        @Override
-        public JsString ToString() {
-            return null;
-        }
+
 
         @Override
         public String toLocaleString(JsString locales, JsAny options) {
@@ -1056,8 +1027,9 @@ this(new JsArray(){{add(new JsString(locales));}},options);
 
             @Override
             public JsString ToString() {
-                return null;
+                return new JsString("Intl");
             }
+
 
             @Override
             public String toLocaleString(JsString locales, JsAny options) {

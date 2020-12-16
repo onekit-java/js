@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import cn.onekit.js.core.JsAny;
 import cn.onekit.js.core.Onekit_JS;
 
 public class RegExp implements JsAny {
@@ -36,8 +37,9 @@ public class RegExp implements JsAny {
 
     @Override
     public JsString ToString() {
-        return null;
+        return new JsString("RegExp");
     }
+
 
     @Override
     public String toLocaleString(JsString locales, JsAny options) {
@@ -73,8 +75,9 @@ public class RegExp implements JsAny {
 
         @Override
         public JsString ToString() {
-            return null;
+            return new JsString("RegExp");
         }
+
 
         @Override
         public String toLocaleString(JsString locales, JsAny options) {
@@ -131,7 +134,7 @@ public class RegExp implements JsAny {
                 result.append(String.format("%d:\"%s\"", i,get(new JsNumber(i))));
             }
             result.append("]");
-            result.append(String.format("groups:%s,", Onekit_JS.toString(getGroups())));
+            result.append(String.format("groups:%s,", JSON.stringify(getGroups()).THIS));
             result.append(String.format("index:%d,", getIndex()));
             result.append(String.format("input:\"%s\",", getInput()));
             result.append(String.format("length:%d", getLength()));

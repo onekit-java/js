@@ -1,5 +1,7 @@
 package cn.onekit.js;
 
+import cn.onekit.js.core.JsAny;
+
 public class WebAssembly implements JsAny {
     public static JsObject compile(JsArray bufferSource){
         return null;
@@ -34,8 +36,9 @@ public class WebAssembly implements JsAny {
 
     @Override
     public JsString ToString() {
-        return null;
+        return new JsString("WebAssembly");
     }
+
 
     @Override
     public String toLocaleString(JsString locales, JsAny options) {

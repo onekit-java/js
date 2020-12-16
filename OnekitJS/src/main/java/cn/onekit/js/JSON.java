@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import java.lang.reflect.Type;
 import java.util.List;
 
+import cn.onekit.js.core.JsAny;
 import cn.onekit.js.core.function;
 
 public class JSON {
@@ -44,29 +45,26 @@ public class JSON {
 			return null;
 		}
 	}
-	public static String _entry(int depth, String key, JsAny value, JsAny replacer, int space){
+	 static String _entry(int depth, String key, JsAny value, JsAny replacer, String space){
 		return String.format("\"%s\":%s",key,_stringify(depth+1,value,replacer,space));
 	}
-	public static String _stringify(int depth, JsAny json, JsAny replacer, int space) {
-		if(space>10){
-			space=10;
-		}
+	 static String _stringify(int depth, JsAny json, JsAny replacer, String space) {
 		if(json==null){
 			return null;
 		}
-		String tab;
-		if( depth>0 && space>0){
-			String format = "%"+depth*space+"s";
-			tab =String.format(format," ");
-		}else {
-			tab = "";
-		}
-		if(json instanceof JsString){
-			String aString = ((JsString)json).THIS;
-			return  String.format("\"%s\"",aString);
+		String tab="";
+		for(int d=0;d<depth;d++){
+			tab+=space;
 		}
 		StringBuilder result = new StringBuilder();
-		if(json instanceof JsArray){
+
+		 if(json instanceof JsNumber){
+			return json.ToString().THIS;
+		}else  if(json instanceof JsString){
+			 return json.ToString().THIS;
+		 }else if(json instanceof JsAny){
+			 return  String.format("%s\"%s\"",tab,((JsString)json).THIS);
+		 }else if(json instanceof JsArray){
 			JsArray array = (JsArray) json;
 			result.append(tab+"[\r\n");
 			int i=0;
@@ -122,20 +120,23 @@ public class JSON {
 		}
 		return result.toString();
 	}
-	public static String stringify(JsAny json, JsAny replacer, int space) {
-		return _stringify( 0,json, replacer,space);
-	}
-	public static String stringify(JsAny json, JsAny replacer, String space) {
-		if(space.length()>10){
-			space = space.substring(0,10);
+	public static JsString stringify(JsAny json, JsAny replacer, JsAny space) {
+		if (space == null) {
+			space = new JsString();
+		}else if (space instanceof JsString ) {
+			if(space.ToString().THIS.length() > 10) {
+				space = new JsString(space.ToString().THIS.substring(0, 10));
+			}
+		}else if(space instanceof JsNumber){
+			space = new JsString(java.lang.Math.min(10,((JsNumber)space).THIS.intValue()));
 		}
-		return stringify( json, replacer, space.length());
+		return new JsString(_stringify( 0,json, replacer,((JsString)space).THIS));
 	}
-	public static String stringify(JsAny json, JsAny replacer) {
-		return stringify(json, replacer, 0);
+	public static JsString stringify(JsAny json, JsAny replacer) {
+		return stringify(json, replacer, new JsString());
 	}
 
-	public static String stringify(JsAny json) {
+	public static JsString stringify(JsAny json) {
 		return stringify(json, null);
 	}
 }

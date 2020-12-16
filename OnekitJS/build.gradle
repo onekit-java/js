@@ -41,7 +41,7 @@ publish{
     userOrg = 'www-onekit-cn' // Bintray 账号名
     groupId = 'cn.onekit.x2x'
     artifactId = 'js'
-    publishVersion = '1.0.0'
+    publishVersion = '1.1.1'
     desc = ''
     website = 'https://www.onekit.cn'
 }

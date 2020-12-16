@@ -3,6 +3,8 @@ package cn.onekit.js;
 import android.icu.text.SimpleDateFormat;
 import java.text.ParsePosition;
 
+import cn.onekit.js.core.JsAny;
+
 public class Date implements JsAny {
 
     private java.util.Date THIS;

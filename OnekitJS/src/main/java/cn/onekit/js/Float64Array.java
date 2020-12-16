@@ -1,5 +1,6 @@
 package cn.onekit.js;
 
+import cn.onekit.js.core.JsAny;
 import cn.onekit.js.core.function;
 
 public class Float64Array extends TypedArray<Double> {

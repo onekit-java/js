@@ -1,5 +1,7 @@
 package cn.onekit.js;
 
+import cn.onekit.js.core.JsAny;
+
 public class WeakSet implements JsAny {
     ////////////
     public JsObject add(JsAny value){
@@ -24,8 +26,9 @@ public class WeakSet implements JsAny {
 
     @Override
     public JsString ToString() {
-        return null;
+        return new JsString("WeakSet");
     }
+
 
     @Override
     public String toLocaleString(JsString locales, JsAny options) {

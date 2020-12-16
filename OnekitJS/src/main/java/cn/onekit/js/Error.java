@@ -1,5 +1,7 @@
 package cn.onekit.js;
 
+import cn.onekit.js.core.JsAny;
+
 public class Error extends java.lang.Error implements JsAny {
 
     public Error(JsAny message) {
@@ -28,11 +30,11 @@ public class Error extends java.lang.Error implements JsAny {
 
     }
 
-
     @Override
     public JsString ToString() {
-        return null;
+        return new JsString("Error");
     }
+
 
     @Override
     public String toLocaleString(JsString locales, JsAny options) {

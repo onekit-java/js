@@ -4,9 +4,9 @@ import android.util.Log;
 
 import java.math.BigInteger;
 
+import cn.onekit.js.JSON;
 import cn.onekit.js.JsBoolean;
 import cn.onekit.js.JsNumber;
-import cn.onekit.js.JsAny;
 import cn.onekit.js.JsString;
 import cn.onekit.thekit.Android;
 import cn.onekit.core.OneKit;
@@ -183,17 +183,6 @@ public class Onekit_JS {
             return (Number) nanValue;
         }
         return number(value);
-    }
-
-    public static String toString(Object value) {
-        if (value == null) {
-            return "undefined";
-        }
-        if (value instanceof JsAny) {
-            return ((JsAny) value).ToString().THIS;
-        } else {
-            return value.toString();
-        }
     }
 
     /*

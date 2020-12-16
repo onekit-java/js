@@ -1,5 +1,6 @@
 package cn.onekit.js;
 
+import cn.onekit.js.core.JsAny;
 import cn.onekit.js.core.Onekit_JS;
 
 /**
@@ -170,8 +171,9 @@ public class DataView implements JsAny {
 
     @Override
     public JsString ToString() {
-        return null;
+        return new JsString("DataView");
     }
+
 
     @Override
     public String toLocaleString(JsString locales, JsAny options) {

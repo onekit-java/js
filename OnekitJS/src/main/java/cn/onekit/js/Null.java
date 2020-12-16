@@ -1,5 +1,7 @@
 package cn.onekit.js;
 
+import cn.onekit.js.core.JsAny;
+
 public class Null implements JsAny {
 
     @Override
@@ -30,8 +32,9 @@ public class Null implements JsAny {
 
     @Override
     public JsString ToString() {
-        return null;
+        return new JsString("Null");
     }
+
 
     @Override
     public String toLocaleString(JsString locales, JsAny options) {

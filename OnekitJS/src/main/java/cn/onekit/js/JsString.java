@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 
+import cn.onekit.js.core.JsAny;
 import cn.onekit.js.core.Onekit_JS;
 import cn.onekit.js.core.function;
 
@@ -12,6 +13,16 @@ public  class JsString implements JsAny {
 
 	public JsString(String THIS) {
 		this.THIS = THIS;
+	}
+	public JsString(int space) {
+		StringBuilder sb = new StringBuilder();
+		sb.setLength(space);
+		sb.replace(0, space-1, " ");
+		this.THIS = sb.toString();
+	}
+
+	public JsString() {
+		this.THIS="";
 	}
 
 /*
@@ -497,7 +508,7 @@ public  class JsString implements JsAny {
 			}
 		}*/
 	public JsString ToString() {
-		return new JsString(THIS);
+		return this;
 	}
 
 	@Override
@@ -513,5 +524,8 @@ public  class JsString implements JsAny {
 	@Override
 	public JsAny get(String key) {
 		return null;
+	}
+	public String toString(){
+		return ToString().THIS;
 	}
 }

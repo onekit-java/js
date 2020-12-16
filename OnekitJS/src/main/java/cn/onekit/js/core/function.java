@@ -1,8 +1,9 @@
 package cn.onekit.js.core;
 
 import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.List;
 
-import cn.onekit.js.JsAny;
 import cn.onekit.js.JsString;
 
 public  class function implements JsAny {
@@ -25,9 +26,9 @@ public  class function implements JsAny {
           this(obj.getClass(), methodName,types);
           this.obj = obj;
      }
-     public JsAny invoke(JsAny... arguments) {
+     public JsAny invoke(JsAny... params) {
           try{
-               return (JsAny) method.invoke(obj, arguments);
+               return (JsAny) method.invoke(obj, Arrays.asList(params).toArray());
           } catch (Exception e) {
                e.printStackTrace();
                return null;
@@ -56,8 +57,9 @@ public  class function implements JsAny {
 
      @Override
      public JsString ToString() {
-          return null;
+          return new JsString("function");
      }
+
 
      @Override
      public String toLocaleString(JsString locales, JsAny options) {

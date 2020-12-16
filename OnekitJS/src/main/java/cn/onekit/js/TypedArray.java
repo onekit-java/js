@@ -5,6 +5,7 @@ import java.util.Comparator;
 
 import cn.onekit.js.core.Iterator;
 
+import cn.onekit.js.core.JsAny;
 import cn.onekit.js.core.Onekit_JS;
 import cn.onekit.js.core.function;
 
@@ -698,10 +699,7 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsAny 
         return null;
     }
 
-    @Override
-    public JsString ToString() {
-        return null;
-    }
+
 
     @Override
     public String toLocaleString(JsString locales, JsAny options) {
@@ -720,5 +718,9 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsAny 
     @Override
     public void set(String key, JsAny value) {
 
+    }
+
+    public JsString ToString(){
+        return new JsString("TypedArray");
     }
 }

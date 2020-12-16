@@ -3,6 +3,7 @@ package cn.onekit.js;
 import java.util.HashMap;
 
 import cn.onekit.js.core.Iterator;
+import cn.onekit.js.core.JsAny;
 import cn.onekit.js.core.function;
 
 public class Map implements JsAny {
@@ -90,8 +91,9 @@ public class Map implements JsAny {
 
     @Override
     public JsString ToString() {
-        return null;
+        return new JsString("Map");
     }
+
 
     @Override
     public String toLocaleString(JsString locales, JsAny options) {
