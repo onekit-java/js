@@ -1,7 +1,5 @@
 package cn.onekit.js;
 
-import cn.onekit.js.core.JsAny;
-
 public class Int8Array extends TypedArray{
     public final static JsNumber BYTES_PER_ELEMENT=new JsNumber(1);
     public final static String name="Int8Array";

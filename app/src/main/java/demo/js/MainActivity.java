@@ -1,16 +1,12 @@
 package demo.js;
 
+import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
+import cn.onekit.js.*;
+import cn.onekit.js.core.JsFile;
 
-import cn.onekit.js.Console;
-import cn.onekit.js.JsNumber;
-import cn.onekit.js.JsString;
-import cn.onekit.js.core.JsAny;
-import cn.onekit.js.core.function;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements JsFile {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

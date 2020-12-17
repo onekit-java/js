@@ -3,8 +3,6 @@ package cn.onekit.js;
 import java.util.HashMap;
 
 import cn.onekit.js.core.Iterator;
-import cn.onekit.js.core.JsAny;
-import cn.onekit.js.core.function;
 
 public class Map implements JsAny {
 

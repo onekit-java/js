@@ -4,7 +4,7 @@ import android.util.Log;
 
 import java.math.BigInteger;
 
-import cn.onekit.js.JSON;
+import cn.onekit.js.JsAny;
 import cn.onekit.js.JsBoolean;
 import cn.onekit.js.JsNumber;
 import cn.onekit.js.JsString;

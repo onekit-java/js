@@ -1,7 +1,5 @@
 package cn.onekit.js;
 
-import cn.onekit.js.core.JsAny;
-
 public class JsBoolean implements JsAny {
     public boolean THIS;
     public JsBoolean(boolean value) {

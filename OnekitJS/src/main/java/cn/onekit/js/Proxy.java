@@ -1,7 +1,5 @@
 package cn.onekit.js;
 
-import cn.onekit.js.core.JsAny;
-
 public class Proxy implements JsAny {
     public static JsObject apply(String target, JsObject thisArg, JsObject argumentsList){
         return null;

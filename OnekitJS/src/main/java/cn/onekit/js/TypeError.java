@@ -1,7 +1,5 @@
 package cn.onekit.js;
 
-import cn.onekit.js.core.JsAny;
-
 public class TypeError extends Error {
     public String columnNumber;
     public String fileName;

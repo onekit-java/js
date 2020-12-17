@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 
-import cn.onekit.js.core.JsAny;
 import cn.onekit.js.core.Onekit_JS;
-import cn.onekit.js.core.function;
 
 public  class JsString implements JsAny {
 	public String THIS;

@@ -1,7 +1,5 @@
 package cn.onekit.js;
 
-import cn.onekit.js.core.JsAny;
-
 public class Error extends java.lang.Error implements JsAny {
 
     public Error(JsAny message) {

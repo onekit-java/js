@@ -4,7 +4,6 @@ import android.util.Log;
 
 import java.util.Random;
 
-import cn.onekit.js.core.JsAny;
 import cn.onekit.js.core.Onekit_JS;
 
 public class Console implements JsAny {

@@ -6,9 +6,6 @@ import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import cn.onekit.js.core.JsAny;
-import cn.onekit.js.core.Onekit_JS;
-
 public class RegExp implements JsAny {
 
     public String getPattern() {

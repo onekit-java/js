@@ -16,6 +16,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import cn.onekit.js.JSON;
+import cn.onekit.js.JsAny;
 import cn.onekit.js.JsArray;
 import cn.onekit.js.Console;
 import cn.onekit.js.JsObject;
@@ -27,6 +28,7 @@ import cn.onekit.js.Map;
 import cn.onekit.js.Null;
 import cn.onekit.js.Symbol;
 import cn.onekit.js.URIError;
+import cn.onekit.js.function;
 
 public interface JsFile {
 
@@ -339,7 +341,7 @@ public interface JsFile {
 
     //
     @SuppressLint("UseSparseArrays")
-    HashMap<Long, cn.onekit.js.core.function> _timeouts = new HashMap();
+    HashMap<Long, function> _timeouts = new HashMap();
 
     default long setTimeout(JsAny function, JsAny delay, JsAny... params) {
 
@@ -354,7 +356,7 @@ public interface JsFile {
             }
         };
         handler.sendEmptyMessageDelayed(0, Onekit_JS.number(delay,0,0).longValue());
-        _timeouts.put(id, (cn.onekit.js.core.function) function);
+        _timeouts.put(id, (cn.onekit.js.function) function);
         return id;
 
     }

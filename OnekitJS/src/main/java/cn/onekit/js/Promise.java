@@ -1,7 +1,5 @@
 package cn.onekit.js;
 
-import cn.onekit.js.core.*;
-
 public class Promise implements JsAny {
     function _callback;
 

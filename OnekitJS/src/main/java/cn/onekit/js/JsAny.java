@@ -1,11 +1,6 @@
-package cn.onekit.js.core;
+package cn.onekit.js;
 
 import java.lang.reflect.Field;
-
-import cn.onekit.js.JSON;
-import cn.onekit.js.JsNumber;
-import cn.onekit.js.JsObject;
-import cn.onekit.js.JsString;
 
 public interface JsAny {
     default JsAny get(String key){

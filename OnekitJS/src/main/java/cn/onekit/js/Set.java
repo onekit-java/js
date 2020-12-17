@@ -4,9 +4,7 @@ import java.util.HashSet;
 import java.util.Random;
 
 import cn.onekit.js.core.Iterator;
-import cn.onekit.js.core.JsAny;
 import cn.onekit.js.core.Onekit_JS;
-import cn.onekit.js.core.function;
 
 public class Set implements Iterable<JsAny> , JsAny {
 
