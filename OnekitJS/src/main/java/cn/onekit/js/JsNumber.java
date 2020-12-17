@@ -34,7 +34,7 @@ public class JsNumber implements JsAny {
         if(!(value instanceof Number)){
             return new JsBoolean(false);
         }
-        return new JsBoolean(Double.isFinite(Double.parseDouble(value.toString())));
+        return new JsBoolean(Double.POSITIVE_INFINITY==Double.parseDouble(value.toString()));
     }
     public static JsBoolean isInteger(JsAny value){
         return new JsBoolean( Onekit_JS.isNumber(value));
