@@ -1,7 +1,7 @@
 package cn.onekit.js;
 
-import android.icu.text.SimpleDateFormat;
 import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
 
 import cn.onekit.js.core.JsAny;
 
