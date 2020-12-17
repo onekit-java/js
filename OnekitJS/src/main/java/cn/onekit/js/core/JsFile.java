@@ -3,6 +3,7 @@ package cn.onekit.js.core;
 import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
@@ -28,6 +29,7 @@ import cn.onekit.js.Map;
 import cn.onekit.js.Null;
 import cn.onekit.js.Symbol;
 import cn.onekit.js.URIError;
+import cn.onekit.js.Undefined;
 import cn.onekit.js.function;
 
 public interface JsFile {
@@ -58,7 +60,7 @@ public interface JsFile {
         return function;
     }
     /////////////////////////////////////
-    default String onekit_$(String format, JsObject args) {
+    default String $(String format, JsObject args) {
         for (JsObject.Entry<String,JsAny> entry : args.entrySet()) {
             String str = String.format("${%s}", entry.getKey());
             format = format.replace(str, JSON.stringify(entry.getValue()).THIS);
@@ -70,7 +72,7 @@ public interface JsFile {
 
     default String typeof(JsAny obj) {
         if (obj == null) {
-            return "undefined";
+            return new Undefined().ToString().THIS;
         }
         if (obj instanceof Null) {
             return "obj";
@@ -143,7 +145,9 @@ public interface JsFile {
             throw new URIError(new JsString("Uncaught URIError: URI malformed"));
         }
     }
-
+     default boolean is(Object obj) {
+        return Onekit_JS.is(obj);
+    }
     String ascii = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234567890";
 
     default String escape(String src) {
@@ -339,7 +343,7 @@ public interface JsFile {
     }
 
 
-    //
+    ////////////////////
     @SuppressLint("UseSparseArrays")
     HashMap<Long, function> _timeouts = new HashMap();
 
@@ -373,9 +377,8 @@ public interface JsFile {
         _timeouts.remove(id);
     }
 
-    //////////////////////////////////////////////
+ //
     HashMap<Long, Timer> _intervals = new HashMap();
-
     default long setInterval(JsAny function, JsAny delay, JsAny... params) {
         final Handler handler = new Handler() {
             @Override
@@ -406,5 +409,40 @@ public interface JsFile {
         }
         _intervals.get(id).cancel();
         _intervals.remove(id);
+    }
+    ////////////////////////
+    default JsAny or(JsAny a, JsAny b) {
+        return a != null ? a : b;
+    }
+    default JsAny fullequals(JsAny a, JsAny b) {
+        if(a==null && b==null){
+            return new JsBoolean(true);
+        }
+        if(a==null && b!=null){
+            return new JsBoolean(false);
+        }
+        if(a!=null && b==null){
+            return new JsBoolean(false);
+        }
+        return new JsBoolean(a.getClass().getName().equals(b.getClass().getName()) && a.equals(b));
+    }
+    default JsAny plus(JsAny a, JsAny b) {
+        if (Onekit_JS.isNumber(a) && Onekit_JS.isNumber(b)) {
+            return new JsNumber(((JsNumber) a).THIS.doubleValue() + ((JsNumber) b).THIS.doubleValue());
+        } else {
+            return new JsString(a.toString() + b.toString());
+        }
+    }
+    default JsAny minus(JsAny a, JsAny b) {
+        return new JsNumber(((JsNumber) a).THIS.doubleValue() - ((JsNumber) b).THIS.doubleValue());
+
+    }
+    default JsAny times(JsAny a, JsAny b) {
+        return new JsNumber(((JsNumber) a).THIS.doubleValue() * ((JsNumber) b).THIS.doubleValue());
+
+    }
+    default JsAny div(JsAny a, JsAny b) {
+        return new JsNumber(((JsNumber) a).THIS.doubleValue() / ((JsNumber) b).THIS.doubleValue());
+
     }
 }

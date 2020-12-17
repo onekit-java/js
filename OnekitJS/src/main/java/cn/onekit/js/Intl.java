@@ -56,7 +56,7 @@ public class Intl  {
         }
 
         @Override
-        public JsAny invoke(JsAny... params) {
+        public JsAny invoke(JsAny... arguments) {
             return null;
         }
 
@@ -140,7 +140,7 @@ public class Intl  {
             }
 
             @Override
-            public JsAny invoke(JsAny... params) {
+            public JsAny invoke(JsAny... arguments) {
                 return null;
             }
         }
@@ -301,7 +301,7 @@ private String _region;
         }
 
         @Override
-        public JsAny invoke(JsAny... params) {
+        public JsAny invoke(JsAny... arguments) {
             return null;
         }
     }
@@ -314,7 +314,7 @@ private String _region;
         }
 
         @Override
-        public JsAny invoke(JsAny... params) {
+        public JsAny invoke(JsAny... arguments) {
             return null;
         }
 
@@ -522,7 +522,7 @@ private String _region;
             }
 
             @Override
-            public JsAny invoke(JsAny... params) {
+            public JsAny invoke(JsAny... arguments) {
                 return null;
             }
         }
@@ -605,7 +605,7 @@ private String _region;
         }
 
         @Override
-        public JsAny invoke(JsAny... params) {
+        public JsAny invoke(JsAny... arguments) {
             return null;
         }
 
@@ -665,7 +665,7 @@ private String _region;
             }
 
             @Override
-            public JsAny invoke(JsAny... params) {
+            public JsAny invoke(JsAny... arguments) {
                 return null;
             }
         }
@@ -742,7 +742,7 @@ this(locales,new JsObject());
         }
 
         @Override
-        public JsAny invoke(JsAny... params) {
+        public JsAny invoke(JsAny... arguments) {
             return null;
         }
 
@@ -878,7 +878,7 @@ this(locales,new JsObject());
             }
 
             @Override
-            public JsAny invoke(JsAny... params) {
+            public JsAny invoke(JsAny... arguments) {
                 return null;
             }
         }
@@ -944,7 +944,7 @@ this(new JsArray(){{add(new JsString(locales));}},options);
         }
 
         @Override
-        public JsAny invoke(JsAny... params) {
+        public JsAny invoke(JsAny... arguments) {
             return null;
         }
 
@@ -998,7 +998,7 @@ this(new JsArray(){{add(new JsString(locales));}},options);
         }
 
         @Override
-        public JsAny invoke(JsAny... params) {
+        public JsAny invoke(JsAny... arguments) {
             return null;
         }
 
@@ -1036,7 +1036,7 @@ this(new JsArray(){{add(new JsString(locales));}},options);
             }
 
             @Override
-            public JsAny invoke(JsAny... params) {
+            public JsAny invoke(JsAny... arguments) {
                 return null;
             }
         }

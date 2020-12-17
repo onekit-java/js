@@ -11,14 +11,16 @@ public class MainActivity extends AppCompatActivity implements JsFile {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new Console().log(new JsString("xxx"));
-        new function(){
-            @Override
-            public JsAny invoke(JsAny... arguments) {
-                JsAny a = arguments[0];
-                new Console().log(a);
-                return null;
-            }
-        }.invoke(new JsNumber(1));
+        final JsAny test = new function(){ public JsAny body(JsArray arguments){
+            JsAny t = arguments.get(0);
+            if(is(fullequals(t,undefined))){
+                return new JsString("Undefined value!");
+            };
+            return t;
+        }};
+        JsAny x = new Undefined();
+        console.get("log").invoke(test.invoke(x));
+
+
     }
 }

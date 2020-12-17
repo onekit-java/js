@@ -281,6 +281,8 @@ public class Onekit_JS {
         return aString == null || aString == "";
     }
 
+
+
     public static boolean is(Object obj) {
         if (obj == null) {
             return false;
@@ -301,10 +303,6 @@ public class Onekit_JS {
             Log.e("[is]===========" + new java.util.Date().getTime(), obj.getClass().getSimpleName());
         }
         return true;
-    }
-
-    public static JsAny or(JsAny object1, JsAny object2) {
-        return object1 != null ? object1 : object2;
     }
 /*
     public static Number p(JsObject x, JsObject y) {
@@ -328,23 +326,4 @@ public class Onekit_JS {
         }
     }
 
-    public static JsAny plus(JsAny a, JsAny b) {
-        if (Onekit_JS.isNumber(a) && Onekit_JS.isNumber(b)) {
-            return new JsNumber(((JsNumber) a).THIS.doubleValue() + ((JsNumber) b).THIS.doubleValue());
-        } else {
-            return new JsString(a.toString() + b.toString());
-        }
-    }
-    public static JsAny subtract(JsAny a, JsAny b) {
-            return new JsNumber(((JsNumber) a).THIS.doubleValue() - ((JsNumber) b).THIS.doubleValue());
-
-    }
-    public static JsAny multiply(JsAny a, JsAny b) {
-        return new JsNumber(((JsNumber) a).THIS.doubleValue() * ((JsNumber) b).THIS.doubleValue());
-
-    }
-    public static JsAny divide(JsAny a, JsAny b) {
-        return new JsNumber(((JsNumber) a).THIS.doubleValue() / ((JsNumber) b).THIS.doubleValue());
-
-    }
 }

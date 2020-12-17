@@ -31,7 +31,7 @@ public class ArrayBuffer implements JsAny {
     }
 
     @Override
-    public JsAny invoke(JsAny... params) {
+    public JsAny invoke(JsAny... arguments) {
         return null;
     }
 

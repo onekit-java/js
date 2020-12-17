@@ -1,18 +1,28 @@
 package cn.onekit.js;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 public interface JsAny {
+
     default JsAny get(String key){
         try {
-            if(this instanceof JsObject){
-                JsObject dict = ((JsObject)this);
+            if(this instanceof JsObject) {
+                JsObject dict = ((JsObject) this);
                 return dict.get(key);
             }else {
                 Class clazz = this.getClass();
-                Field field = clazz.getDeclaredField(key);
-                field.setAccessible(true);
-                return (JsAny) field.get(this);
+                for(Field field : clazz.getFields()) {
+                    if(field.getName().equals(key)){
+                        return new JsNative(field.get(this));
+                    }
+                }
+                for(Method method : clazz.getMethods()) {
+                    if(method.getName().equals(key)){
+                        return new function(this,method);
+                    }
+                }
+                return null;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -141,8 +151,6 @@ public interface JsAny {
         return toString();
     }
 
-    default JsAny invoke(JsAny... params){
-        return null;
-    }
+     JsAny invoke(JsAny... arguments);
 
 }

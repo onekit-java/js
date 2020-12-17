@@ -705,7 +705,7 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsAny 
     }
 
     @Override
-    public JsAny invoke(JsAny... params) {
+    public JsAny invoke(JsAny... arguments) {
         return null;
     }
     @Override

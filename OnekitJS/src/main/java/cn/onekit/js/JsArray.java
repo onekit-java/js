@@ -59,10 +59,20 @@ public class JsArray extends ArrayList<JsAny> implements JsAny {
     }
 
     @Override
-    public JsAny invoke(JsAny... params) {
+    public JsAny invoke(JsAny... arguments) {
         return null;
     }
 
+    @Override
+    public JsAny get(int index) {
+        if(size()<=0){
+            return new Undefined();
+        }
+        if(index<0 || index>=size()){
+            return new Undefined();
+        }
+        return super.get(index);
+    }
     @Override
     public JsAny get(String key) {
         return null;

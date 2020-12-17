@@ -60,7 +60,7 @@ public class JSON {
 		}else  if(json instanceof JsString){
 			 return json.ToString().THIS;
 		 }else if(json instanceof JsAny){
-			 return  String.format("%s\"%s\"",tab,((JsString)json).THIS);
+			 return  String.format("%s\"%s\"",tab,json.ToString().THIS);
 		 }else if(json instanceof JsArray){
 			JsArray array = (JsArray) json;
 			result.append(tab+"[\r\n");

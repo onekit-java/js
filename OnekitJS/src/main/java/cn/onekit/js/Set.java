@@ -120,7 +120,7 @@ public class Set implements Iterable<JsAny> , JsAny {
     }
 
     @Override
-    public JsAny invoke(JsAny... params) {
+    public JsAny invoke(JsAny... arguments) {
         return null;
     }
 }
