@@ -18,20 +18,27 @@ public class WeakSet implements JsAny {
     }
 
     @Override
-    public void set(JsAny key, JsAny value) {
+        public JsAny set(JsAny key, JsAny value) {
+return this;
+        }
 
+    @Override
+    public JsAny get(String key) {
+        return null;
     }
 
     @Override
-    public JsString ToString() {
+    public JsAny set(String key, JsAny value) {
+        return null;
+    }
+
+    @Override
+    public JsAny ToString() {
         return new JsString("WeakSet");
     }
 
 
-    @Override
-    public String toLocaleString(JsString locales, JsAny options) {
-        return null;
-    }
+
 
     @Override
     public JsAny invoke(JsAny... arguments) {

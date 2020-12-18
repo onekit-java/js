@@ -13,31 +13,39 @@ public class Error extends java.lang.Error implements JsAny {
         return null;
     }
 
-    @Override
-    public JsAny get(String key) {
-        return null;
-    }
+
 
     @Override
     public JsAny get(JsAny key) {
         return null;
     }
 
-    @Override
-    public void set(String key, JsAny value) {
 
+
+
+
+    @Override
+    public JsAny set(JsAny key, JsAny value) {
+        return null;
     }
 
     @Override
-    public JsString ToString() {
+    public JsAny get(String key) {
+        return null;
+    }
+
+    @Override
+    public JsAny set(String key, JsAny value) {
+        return null;
+    }
+
+    @Override
+    public JsAny ToString() {
         return new JsString("Error");
     }
 
 
-    @Override
-    public String toLocaleString(JsString locales, JsAny options) {
-        return null;
-    }
+
 
     @Override
     public JsAny invoke(JsAny... arguments) {

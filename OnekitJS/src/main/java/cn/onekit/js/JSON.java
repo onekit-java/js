@@ -56,11 +56,11 @@ public class JSON {
 		StringBuilder result = new StringBuilder();
 
 		 if(json instanceof JsNumber){
-			return json.ToString().THIS;
+			return ((JsString)json.ToString()).THIS;
 		}else  if(json instanceof JsString){
-			 return json.ToString().THIS;
+			 return ((JsString)json).THIS;
 		 }else if(json instanceof JsAny){
-			 return  String.format("%s\"%s\"",tab,json.ToString().THIS);
+			 return  String.format("%s\"%s\"",tab,((JsString)json.ToString()).THIS);
 		 }else if(json instanceof JsArray){
 			JsArray array = (JsArray) json;
 			result.append(tab+"[\r\n");
@@ -121,8 +121,8 @@ public class JSON {
 		if (space == null) {
 			space = new JsString();
 		}else if (space instanceof JsString ) {
-			if(space.ToString().THIS.length() > 10) {
-				space = new JsString(space.ToString().THIS.substring(0, 10));
+			if(((JsString)space.ToString()).THIS.length() > 10) {
+				space = new JsString(((JsString)space.ToString()).THIS.substring(0, 10));
 			}
 		}else if(space instanceof JsNumber){
 			space = new JsString(java.lang.Math.min(10,((JsNumber)space).THIS.intValue()));

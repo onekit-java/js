@@ -463,15 +463,12 @@ public class Date implements JsAny {
         return null;
     }
 
-    public JsString ToString() {
+    public JsAny ToString() {
 
         return new JsString(new SimpleDateFormat("EEE MMM dd yyyy hh:mm:ss 'GMT'Z").format(THIS));
     }
 
-    @Override
-    public String toLocaleString(JsString locales, JsAny options) {
-        return null;
-    }
+
 
     @Override
     public JsAny invoke(JsAny... arguments) {
@@ -490,24 +487,29 @@ public class Date implements JsAny {
         return new JsNumber(THIS.getYear());
     }
 
-    @Override
-    public JsAny get(String key) {
-        return null;
-    }
+
 
     @Override
     public JsAny get(JsAny key) {
         return null;
     }
 
-    @Override
-    public void set(String key, JsAny value) {
 
+
+
+    @Override
+        public JsAny set(JsAny key, JsAny value) {
+return this;
+        }
+
+    @Override
+    public JsAny get(String key) {
+        return null;
     }
 
     @Override
-    public void set(JsAny key, JsAny value) {
-
+    public JsAny set(String key, JsAny value) {
+        return null;
     }
 /*
     public NUMBER valueOf(){

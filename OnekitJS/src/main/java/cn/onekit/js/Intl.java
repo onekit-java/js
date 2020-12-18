@@ -50,10 +50,7 @@ public class Intl  {
 
 
 
-        @Override
-        public String toLocaleString(JsString locales, JsAny options) {
-            return null;
-        }
+
 
         @Override
         public JsAny invoke(JsAny... arguments) {
@@ -128,16 +125,13 @@ public class Intl  {
             }
 
             @Override
-            public void set(JsAny key, JsAny value) {
-
+            public JsAny set(JsAny key, JsAny value) {
+                return this;
             }
 
 
 
-            @Override
-            public String toLocaleString(JsString locales, JsAny options) {
-                return null;
-            }
+
 
             @Override
             public JsAny invoke(JsAny... arguments) {
@@ -289,16 +283,13 @@ private String _region;
         }
 
         @Override
-        public void set(JsAny key, JsAny value) {
-
+        public JsAny set(JsAny key, JsAny value) {
+            return this;
         }
 
 
 
-        @Override
-        public String toLocaleString(JsString locales, JsAny options) {
-            return null;
-        }
+
 
         @Override
         public JsAny invoke(JsAny... arguments) {
@@ -308,10 +299,7 @@ private String _region;
 
     public static class DateTimeFormat extends JsObject {
 
-        @Override
-        public String toLocaleString(JsString locales, JsAny options) {
-            return null;
-        }
+
 
         @Override
         public JsAny invoke(JsAny... arguments) {
@@ -510,16 +498,13 @@ private String _region;
             }
 
             @Override
-            public void set(JsAny key, JsAny value) {
-
+            public JsAny set(JsAny key, JsAny value) {
+                return this;
             }
 
 
 
-            @Override
-            public String toLocaleString(JsString locales, JsAny options) {
-                return null;
-            }
+
 
             @Override
             public JsAny invoke(JsAny... arguments) {
@@ -593,16 +578,13 @@ private String _region;
         }
 
         @Override
-        public void set(JsAny key, JsAny value) {
-
+        public JsAny set(JsAny key, JsAny value) {
+return this;
         }
 
 
 
-        @Override
-        public String toLocaleString(JsString locales, JsAny options) {
-            return null;
-        }
+
 
         @Override
         public JsAny invoke(JsAny... arguments) {
@@ -653,16 +635,13 @@ private String _region;
             }
 
             @Override
-            public void set(JsAny key, JsAny value) {
+        public JsAny set(JsAny key, JsAny value) {
+return this;
+        }
 
-            }
 
 
 
-            @Override
-            public String toLocaleString(JsString locales, JsAny options) {
-                return null;
-            }
 
             @Override
             public JsAny invoke(JsAny... arguments) {
@@ -730,16 +709,13 @@ this(locales,new JsObject());
         }
 
         @Override
-        public void set(JsAny key, JsAny value) {
-
+        public JsAny set(JsAny key, JsAny value) {
+return this;
         }
 
 
 
-        @Override
-        public String toLocaleString(JsString locales, JsAny options) {
-            return null;
-        }
+
 
         @Override
         public JsAny invoke(JsAny... arguments) {
@@ -866,16 +842,13 @@ this(locales,new JsObject());
             }
 
             @Override
-            public void set(JsAny key, JsAny value) {
+        public JsAny set(JsAny key, JsAny value) {
+return this;
+        }
 
-            }
 
 
 
-            @Override
-            public String toLocaleString(JsString locales, JsAny options) {
-                return null;
-            }
 
             @Override
             public JsAny invoke(JsAny... arguments) {
@@ -932,16 +905,13 @@ this(new JsArray(){{add(new JsString(locales));}},options);
         }
 
         @Override
-        public void set(JsAny key, JsAny value) {
-
+        public JsAny set(JsAny key, JsAny value) {
+return this;
         }
 
 
 
-        @Override
-        public String toLocaleString(JsString locales, JsAny options) {
-            return null;
-        }
+
 
         @Override
         public JsAny invoke(JsAny... arguments) {
@@ -986,16 +956,13 @@ this(new JsArray(){{add(new JsString(locales));}},options);
         }
 
         @Override
-        public void set(JsAny key, JsAny value) {
-
+        public JsAny set(JsAny key, JsAny value) {
+return this;
         }
 
 
 
-        @Override
-        public String toLocaleString(JsString locales, JsAny options) {
-            return null;
-        }
+
 
         @Override
         public JsAny invoke(JsAny... arguments) {
@@ -1004,36 +971,40 @@ this(new JsArray(){{add(new JsString(locales));}},options);
 
         public static class Options implements JsAny {
 
-            @Override
-            public JsAny get(String key) {
-                return null;
-            }
+
 
             @Override
             public JsAny get(JsAny key) {
                 return null;
             }
 
-            @Override
-            public void set(String key, JsAny value) {
 
+
+
+
+            @Override
+        public JsAny set(JsAny key, JsAny value) {
+return this;
+        }
+
+            @Override
+            public JsAny get(String key) {
+                return null;
             }
 
             @Override
-            public void set(JsAny key, JsAny value) {
-
+            public JsAny set(String key, JsAny value) {
+                return null;
             }
 
+
             @Override
-            public JsString ToString() {
+            public JsAny ToString() {
                 return new JsString("Intl");
             }
 
 
-            @Override
-            public String toLocaleString(JsString locales, JsAny options) {
-                return null;
-            }
+
 
             @Override
             public JsAny invoke(JsAny... arguments) {

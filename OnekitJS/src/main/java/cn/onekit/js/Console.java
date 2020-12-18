@@ -49,7 +49,27 @@ public class Console implements JsAny {
 
 
     @Override
-    public JsString ToString() {
+    public JsAny get(JsAny key) {
+        return null;
+    }
+
+    @Override
+    public JsAny set(JsAny key, JsAny value) {
+        return null;
+    }
+
+    @Override
+    public JsAny get(String key) {
+        return Onekit_JS.get(this,key);
+    }
+
+    @Override
+    public JsAny set(String key, JsAny value) {
+        return null;
+    }
+
+    @Override
+    public JsAny ToString() {
         return new JsString("Console");
     }
 

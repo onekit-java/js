@@ -53,10 +53,7 @@ public class JsArray extends ArrayList<JsAny> implements JsAny {
         return array.size() + index;
     }
 
-    @Override
-    public String toLocaleString(JsString locales, JsAny options) {
-        return null;
-    }
+
 
     @Override
     public JsAny invoke(JsAny... arguments) {
@@ -73,10 +70,7 @@ public class JsArray extends ArrayList<JsAny> implements JsAny {
         }
         return super.get(index);
     }
-    @Override
-    public JsAny get(String key) {
-        return null;
-    }
+
 
     //////////////////////////////////////
     public static JsArray from(JsAny arrayLike, JsAny mapFn, JsAny thisArg) {
@@ -647,18 +641,27 @@ public class JsArray extends ArrayList<JsAny> implements JsAny {
         return super.get(index);
     }
 
-    @Override
-    public void set(String key, JsAny value) {
-    }
+
 
     @Override
-    public void set(JsAny key, JsAny value) {
+    public JsAny set(JsAny key, JsAny value) {
         int index = Onekit_JS.number(key, 0, 0).intValue();
         set(index, value);
+        return this;
     }
 
     @Override
-    public JsString ToString() {
+    public JsAny get(String key) {
+        return null;
+    }
+
+    @Override
+    public JsAny set(String key, JsAny value) {
+        return null;
+    }
+
+    @Override
+    public JsAny ToString() {
         return JSON.stringify(this);
     }
 }

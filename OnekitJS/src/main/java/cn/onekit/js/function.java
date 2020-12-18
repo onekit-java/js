@@ -1,22 +1,15 @@
 package cn.onekit.js;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import cn.onekit.js.JsAny;
-import cn.onekit.js.JsString;
 
 public class function implements JsAny {
-     JsAny obj;
+     Object obj;
      Method method;
      public JsAny thisArg;
      public function(){
 
      }
-     public function(JsAny obj,Method method) {
+     public function(Object obj,Method method) {
           this.obj=obj;
           this.method=method;
      }
@@ -54,34 +47,37 @@ public class function implements JsAny {
           }
      }
 
-     @Override
-     public JsAny get(String key) {
-          return null;
-     }
+
 
      @Override
      public JsAny get(JsAny key) {
           return null;
      }
 
-     @Override
-     public void set(String key, JsAny value) {
 
+
+
+
+     @Override
+     public JsAny set(JsAny key, JsAny value) {
+return this;
      }
 
      @Override
-     public void set(JsAny key, JsAny value) {
-
+     public JsAny get(String key) {
+          return null;
      }
 
      @Override
-     public JsString ToString() {
+     public JsAny set(String key, JsAny value) {
+          return null;
+     }
+
+     @Override
+     public JsAny ToString() {
           return new JsString("function");
      }
 
 
-     @Override
-     public String toLocaleString(JsString locales, JsAny options) {
-          return null;
-     }
+
 }

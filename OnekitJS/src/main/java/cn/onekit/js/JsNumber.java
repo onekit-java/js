@@ -144,10 +144,10 @@ public class JsNumber implements JsAny {
         return new JsString("");
     }
     @Override
-    public JsString ToString() {
+    public JsAny ToString() {
         return ToString(null);
     }
-    public JsString ToString(JsAny radix) {
+    public JsAny ToString(JsAny radix) {
         int r = Onekit_JS.number(radix,10,10).intValue();
         if(THIS instanceof Integer){
             return new JsString(THIS.toString());
@@ -170,32 +170,32 @@ public class JsNumber implements JsAny {
         return new JsString(isN?"-":""+sb.reverse().toString().toLowerCase());
     }
 
-    @Override
-    public JsAny get(String key) {
-        return null;
-    }
+
 
     @Override
     public JsAny get(JsAny key) {
         return null;
     }
 
-    @Override
-    public void set(String key, JsAny value) {
 
+
+
+
+    @Override
+    public JsAny set(JsAny key, JsAny value) {
+return this;
     }
 
     @Override
-    public void set(JsAny key, JsAny value) {
-
-    }
-
-
-
-    @Override
-    public String toLocaleString(JsString locales, JsAny options) {
+    public JsAny get(String key) {
         return null;
     }
+
+    @Override
+    public JsAny set(String key, JsAny value) {
+        return null;
+    }
+
 
     @Override
     public JsAny invoke(JsAny... arguments) {

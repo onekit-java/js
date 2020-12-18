@@ -2,12 +2,16 @@ package cn.onekit.js.core;
 
 import android.util.Log;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.math.BigInteger;
 
-import cn.onekit.js.JsAny;
 import cn.onekit.js.JsBoolean;
+import cn.onekit.js.JsNative;
 import cn.onekit.js.JsNumber;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.JsString;
+import cn.onekit.js.function;
 import cn.onekit.thekit.Android;
 import cn.onekit.core.OneKit;
 import cn.onekit.js.JsArray;
@@ -326,4 +330,28 @@ public class Onekit_JS {
         }
     }
 
+    public static JsAny get(Object obj,String key) {
+        try {
+            if (obj instanceof JsObject) {
+                JsObject dict = ((JsObject) obj);
+                return dict.get(key);
+            } else {
+                Class clazz = obj.getClass();
+                for (Field field : clazz.getFields()) {
+                    if (field.getName().equals(key)) {
+                        return new JsNative(field.get(obj));
+                    }
+                }
+                for (Method method : clazz.getMethods()) {
+                    if (method.getName().equals(key)) {
+                        return new function(obj, method);
+                    }
+                }
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

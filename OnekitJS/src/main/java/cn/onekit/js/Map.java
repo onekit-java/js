@@ -49,19 +49,15 @@ public class Map implements JsAny {
         forEach(callback, null);
     }
 
-    @Override
-    public JsAny get(String key) {
-        return null;
-    }
+
 
     public JsAny get(JsAny key) {
         return _THIS.get(key);
     }
 
-    @Override
-    public void set(String key, JsAny value) {
 
-    }
+
+
 
     public JsBoolean has(JsAny key) {
          for (JsObject.Entry entry :_THIS.entrySet()){
@@ -83,20 +79,27 @@ public class Map implements JsAny {
         };
     }
 
-    public void set(JsAny key, JsAny value) {
-        _THIS.put(key ,value);
+    public JsAny set(JsAny key, JsAny value) {
+        _THIS.put(key ,value);return this;
     }
 
     @Override
-    public JsString ToString() {
+    public JsAny get(String key) {
+        return null;
+    }
+
+    @Override
+    public JsAny set(String key, JsAny value) {
+        return null;
+    }
+
+    @Override
+    public JsAny ToString() {
         return new JsString("Map");
     }
 
 
-    @Override
-    public String toLocaleString(JsString locales, JsAny options) {
-        return null;
-    }
+
 
     @Override
     public JsAny invoke(JsAny... arguments) {

@@ -32,7 +32,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
 
     implementation 'com.google.code.gson:gson:2.8.6'
-    implementation 'cn.onekit.x2x:onekit:1.1.1'
+    implementation 'cn.onekit.x2x:onekit:1.2.0'
     implementation 'org.apache.commons:commons-lang3:3.11'
     implementation 'androidx.annotation:annotation:1.1.0'
 }
@@ -41,7 +41,7 @@ publish{
     userOrg = 'www-onekit-cn' // Bintray 账号名
     groupId = 'cn.onekit.x2x'
     artifactId = 'js'
-    publishVersion = '1.1.1'
+    publishVersion = '1.2.0'
     desc = ''
     website = 'https://www.onekit.cn'
 }

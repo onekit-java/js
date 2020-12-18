@@ -67,8 +67,9 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsAny 
         return new JsNumber( Onekit_JS.bytes2number(_buffer._data,_name(getClass()).replace("Array",""), size,size*index));
     }
 
-    public void set(JsAny index, JsAny value) {
+    public JsAny set(JsAny index, JsAny value) {
         _set(Onekit_JS.number(index,0,0).intValue(),this,value);
+        return this;
     }
 
     public static int _index(TypedArray array, int index) {
@@ -675,7 +676,7 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsAny 
                 result.append("null");
                 continue;
             }
-            String str = element.toLocaleString(locales, options);
+            String str = element.toString();
             result.append(str);
         }
         return new JsString( result.toString());
@@ -698,27 +699,29 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsAny 
     }
 
 
-
-    @Override
-    public String toLocaleString(JsString locales, JsAny options) {
-        return null;
-    }
-
-    @Override
-    public JsAny invoke(JsAny... arguments) {
-        return null;
-    }
     @Override
     public JsAny get(String key) {
         return null;
     }
 
     @Override
-    public void set(String key, JsAny value) {
-
+    public JsAny set(String key, JsAny value) {
+        return null;
     }
 
-    public JsString ToString(){
+
+
+    @Override
+    public JsAny invoke(JsAny... arguments) {
+        return null;
+    }
+
+
+
+
+    public JsAny ToString(){
         return new JsString("TypedArray");
     }
+
+
 }

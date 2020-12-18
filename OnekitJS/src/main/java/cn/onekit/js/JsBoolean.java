@@ -26,18 +26,31 @@ public class JsBoolean implements JsAny {
     public static JsBoolean valueof(JsAny value) {
         return new JsBoolean(value);
     }
-    public JsString ToString() {
+    public JsAny ToString() {
         return new JsString(String.valueOf(THIS));
     }
 
-    @Override
-    public String toLocaleString(JsString locales, JsAny options) {
-        return null;
-    }
+
 
     @Override
     public JsAny invoke(JsAny... arguments) {
         return null;
+    }
+
+
+
+    @Override
+    public JsAny get(JsAny key) {
+        return null;
+    }
+
+
+
+
+
+    @Override
+    public JsAny set(JsAny key, JsAny value) {
+        return this;
     }
 
     @Override
@@ -46,17 +59,7 @@ public class JsBoolean implements JsAny {
     }
 
     @Override
-    public JsAny get(JsAny key) {
+    public JsAny set(String key, JsAny value) {
         return null;
-    }
-
-    @Override
-    public void set(String key, JsAny value) {
-
-    }
-
-    @Override
-    public void set(JsAny key, JsAny value) {
-
     }
 }

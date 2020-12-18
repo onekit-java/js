@@ -3,7 +3,6 @@ package cn.onekit.js.core;
 import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
@@ -17,7 +16,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import cn.onekit.js.JSON;
-import cn.onekit.js.JsAny;
 import cn.onekit.js.JsArray;
 import cn.onekit.js.Console;
 import cn.onekit.js.JsObject;

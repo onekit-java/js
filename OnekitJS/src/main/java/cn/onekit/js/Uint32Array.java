@@ -1,5 +1,7 @@
 package cn.onekit.js;
 
+import cn.onekit.js.core.JsAny;
+
 public class Uint32Array extends TypedArray{
     public final static JsNumber BYTES_PER_ELEMENT=new JsNumber(4);
     public final static String name = "Uint32Array";
