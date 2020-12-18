@@ -3,6 +3,7 @@ package demo.js;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
+import cn.onekit.*;
 import cn.onekit.js.*;
 import cn.onekit.js.core.JsFile;
 
@@ -19,7 +20,8 @@ public class MainActivity extends AppCompatActivity implements JsFile {
             return t;
         }};
         JsAny x = new Undefined();
-        console.get("log").invoke(test.invoke(x));
+        console.log(test.invoke(x));
+
 
 
     }

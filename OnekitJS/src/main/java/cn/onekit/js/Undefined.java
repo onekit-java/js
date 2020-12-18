@@ -1,5 +1,7 @@
 package cn.onekit.js;
 
+import cn.onekit.JsAny;
+
 public class Undefined implements JsAny {
 
     @Override

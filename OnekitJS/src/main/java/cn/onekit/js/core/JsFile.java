@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
 import cn.onekit.JsAny;
 import cn.onekit.js.JSON;
 import cn.onekit.js.JsArray;
-import cn.onekit.js.Console;
+import cn.onekit.js.console;
 import cn.onekit.js.JsObject;
 import cn.onekit.js.Error;
 import cn.onekit.js.JsBoolean;
@@ -71,7 +71,7 @@ public interface JsFile {
 
     default String typeof(JsAny obj) {
         if (obj == null) {
-            return new Undefined().ToString().THIS;
+            return ((JsString)new Undefined().ToString()).THIS;
         }
         if (obj instanceof Null) {
             return "obj";
@@ -305,7 +305,7 @@ public interface JsFile {
     }
 
     /////////////////////////////////////
-      Console console = new Console();
+      console console = new console();
     /////////////////////////////////////
 
 

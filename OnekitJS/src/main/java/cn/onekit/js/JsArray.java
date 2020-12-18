@@ -222,7 +222,6 @@ public class JsArray extends ArrayList<JsAny> implements JsAny {
         }
         return true;
     }
-
     public boolean every(function callback) {
         return every(callback, null);
     }

@@ -71,7 +71,7 @@ public class console implements JsAny {
 
     @Override
     public JsAny ToString() {
-        return new JsString("Console");
+        return new JsString("console");
     }
 
     @Override

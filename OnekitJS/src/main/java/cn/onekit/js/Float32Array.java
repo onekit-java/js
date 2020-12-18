@@ -1,5 +1,7 @@
 package cn.onekit.js;
 
+import cn.onekit.JsAny;
+
 public class Float32Array extends TypedArray<Double> {
     public final static JsNumber BYTES_PER_ELEMENT=new JsNumber(4);
     public final static String name="Float32Array";

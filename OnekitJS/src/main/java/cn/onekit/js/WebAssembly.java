@@ -1,5 +1,7 @@
 package cn.onekit.js;
 
+import cn.onekit.JsAny;
+
 public class WebAssembly implements JsAny {
     public static JsObject compile(JsArray bufferSource){
         return null;

@@ -1,6 +1,8 @@
 package cn.onekit.js;
 
 
+import cn.onekit.JsAny;
+
 public class JsNative implements JsAny {
 
     public JsNative(Object obj){

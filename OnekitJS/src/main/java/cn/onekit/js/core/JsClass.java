@@ -1,6 +1,8 @@
 package cn.onekit.js.core;
 
-public abstract class JsClass implements JsFile, JsAny {
+import cn.onekit.JsAny;
+
+public abstract class JsClass implements  JsAny {
 
 
 }

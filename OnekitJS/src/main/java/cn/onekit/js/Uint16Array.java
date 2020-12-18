@@ -1,5 +1,7 @@
 package cn.onekit.js;
 
+import cn.onekit.JsAny;
+
 public class Uint16Array extends TypedArray{
     public final static JsNumber BYTES_PER_ELEMENT=new JsNumber(2);
     public final static String name = "Uint16Array";

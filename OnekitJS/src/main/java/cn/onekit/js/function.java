@@ -1,6 +1,5 @@
 package cn.onekit.js;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import cn.onekit.JsAny;
@@ -28,8 +27,7 @@ public class function implements JsAny {
           this(obj.getClass(), methodName,types);
           this.obj = obj;
      }*/
-     public JsAny invoke(JsAny... arguments) {
-          /*
+     public JsAny body(JsArray arguments) {
           try {
                if(method.getParameterTypes().length==1 && method.getParameterTypes()[0].isArray()){
                     return (JsAny) method.invoke(obj, new Object[]{arguments.toArray(new JsAny[arguments.size()])});
@@ -39,15 +37,11 @@ public class function implements JsAny {
           } catch (Exception e) {
                e.printStackTrace();
                return null;
-          }*/
-          try {
-               return (JsAny) method.invoke(obj, arguments);
-          } catch (Exception e) {
-               e.printStackTrace();
-               return null;
           }
      }
-
+     public JsAny invoke(JsAny... arguments) {
+          return body(JsArray.of(arguments));
+     }
      @Override
      public JsAny get(JsAny key) {
           return null;
