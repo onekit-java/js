@@ -1,5 +1,7 @@
 package cn.onekit.js;
 
+import androidx.annotation.Nullable;
+
 import cn.onekit.JsAny;
 
 public class Undefined implements JsAny {
@@ -32,5 +34,10 @@ public class Undefined implements JsAny {
     @Override
     public JsAny invoke(JsAny... arguments) {
         return null;
+    }
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        return obj instanceof Undefined;
     }
 }

@@ -80,7 +80,7 @@ public interface JsFile {
     }
 
     JsAny NaN = JsNumber.NaN;
-    JsAny undefined = null;
+    JsAny undefined = new Undefined();
     JsAny Infinity = JsNumber.POSITIVE_INFINITY;
     JsAny Null = new Null();
 
@@ -424,6 +424,18 @@ public interface JsFile {
             return new JsBoolean(false);
         }
         return new JsBoolean(a.getClass().getName().equals(b.getClass().getName()) && a.equals(b));
+    }
+    default JsAny quals(JsAny a, JsAny b) {
+        if(a==null && b==null){
+            return new JsBoolean(true);
+        }
+        if(a==null && b!=null){
+            return new JsBoolean(false);
+        }
+        if(a!=null && b==null){
+            return new JsBoolean(false);
+        }
+        return new JsBoolean( a.equals(b));
     }
     default JsAny plus(JsAny a, JsAny b) {
         if (Onekit_JS.isNumber(a) && Onekit_JS.isNumber(b)) {
