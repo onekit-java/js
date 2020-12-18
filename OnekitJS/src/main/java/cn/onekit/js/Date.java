@@ -3,6 +3,8 @@ package cn.onekit.js;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 
+import cn.onekit.JsAny;
+
 public class Date implements JsAny {
 
     private java.util.Date THIS;

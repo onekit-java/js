@@ -1,5 +1,7 @@
 package cn.onekit.js;
 
+import cn.onekit.JsAny;
+
 public class Reflect  {
     ////////////////////////
     public static JsAny apply(JsObject target, JsObject thisArgument, JsObject argumentsList){

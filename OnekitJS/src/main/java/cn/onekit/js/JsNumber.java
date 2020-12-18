@@ -1,5 +1,6 @@
 package cn.onekit.js;
 
+import cn.onekit.JsAny;
 import cn.onekit.js.core.Onekit_JS;
 
 public class JsNumber implements JsAny {

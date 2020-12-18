@@ -4,9 +4,10 @@ import android.util.Log;
 
 import java.util.Random;
 
+import cn.onekit.JsAny;
 import cn.onekit.js.core.Onekit_JS;
 
-public class Console implements JsAny {
+public class console implements JsAny {
     String _run(JsAny... data) {
         StringBuilder str = new StringBuilder(" \r\n");
         for (int i=0;i<data.length;i++) {

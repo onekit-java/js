@@ -2,6 +2,7 @@ package cn.onekit.js;
 
 import java.util.HashMap;
 
+import cn.onekit.JsAny;
 import cn.onekit.js.core.Iterator;
 
 public class Map implements JsAny {
