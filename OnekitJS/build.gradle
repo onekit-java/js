@@ -41,7 +41,7 @@ publish{
     userOrg = 'www-onekit-cn'
     groupId = 'cn.onekit.x2x'
     artifactId = 'js'
-    publishVersion = '1.3.1'
+    publishVersion = '1.3.2'
     desc = ''
     website = 'https://www.onekit.cn'
 }
