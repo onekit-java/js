@@ -1,6 +1,6 @@
 package cn.onekit.js;
 
-import cn.onekit.JsAny;
+import cn.onekit.js.JsAny;
 
 public class Promise implements JsAny {
     function _callback;
@@ -124,7 +124,7 @@ return this;
     }
 
     @Override
-    public JsAny ToString() {
+    public JsString ToString() {
         return new JsString("Promise");
     }
 

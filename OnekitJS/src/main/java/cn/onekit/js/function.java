@@ -2,7 +2,7 @@ package cn.onekit.js;
 
 import java.lang.reflect.Method;
 
-import cn.onekit.JsAny;
+import cn.onekit.js.JsAny;
 
 public class function implements JsAny {
      Object obj;
@@ -67,7 +67,7 @@ return this;
      }
 
      @Override
-     public JsAny ToString() {
+     public JsString ToString() {
           return new JsString("function");
      }
 

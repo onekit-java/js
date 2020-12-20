@@ -2,7 +2,7 @@ package cn.onekit.js;
 
 import java.util.HashMap;
 
-import cn.onekit.JsAny;
+import cn.onekit.js.JsAny;
 import cn.onekit.js.core.Iterator;
 
 public class Map implements JsAny {
@@ -95,7 +95,7 @@ public class Map implements JsAny {
     }
 
     @Override
-    public JsAny ToString() {
+    public JsString ToString() {
         return new JsString("Map");
     }
 

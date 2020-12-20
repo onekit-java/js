@@ -15,7 +15,7 @@ import java.util.TimerTask;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import cn.onekit.JsAny;
+import cn.onekit.js.JsAny;
 import cn.onekit.js.JSON;
 import cn.onekit.js.JsArray;
 import cn.onekit.js.console;

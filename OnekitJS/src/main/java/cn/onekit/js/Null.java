@@ -1,6 +1,6 @@
 package cn.onekit.js;
 
-import cn.onekit.JsAny;
+import cn.onekit.js.JsAny;
 
 public class Null implements JsAny {
 
@@ -35,7 +35,7 @@ return this;
     }
 
     @Override
-    public JsAny ToString() {
+    public JsString ToString() {
         return new JsString("Null");
     }
 

@@ -1,6 +1,6 @@
 package cn.onekit.js;
 
-import cn.onekit.JsAny;
+import cn.onekit.js.JsAny;
 
 public class Reflect  {
     ////////////////////////

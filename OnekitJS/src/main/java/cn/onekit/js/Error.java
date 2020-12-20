@@ -1,6 +1,6 @@
 package cn.onekit.js;
 
-import cn.onekit.JsAny;
+import cn.onekit.js.JsAny;
 
 public class Error extends java.lang.Error implements JsAny {
 
@@ -42,7 +42,7 @@ public class Error extends java.lang.Error implements JsAny {
     }
 
     @Override
-    public JsAny ToString() {
+    public JsString ToString() {
         return new JsString("Error");
     }
 

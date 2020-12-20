@@ -1,6 +1,6 @@
 package cn.onekit.js;
 
-import cn.onekit.JsAny;
+import cn.onekit.js.JsAny;
 import cn.onekit.js.core.Onekit_JS;
 
 public class Math implements JsAny {
@@ -338,7 +338,7 @@ return this;
     }
 
     @Override
-    public JsAny ToString() {
+    public JsString ToString() {
         return new JsString("Math");
     }
 

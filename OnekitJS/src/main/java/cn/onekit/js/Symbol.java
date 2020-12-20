@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import cn.onekit.JsAny;
+import cn.onekit.js.JsAny;
 
 
 public class Symbol implements JsAny {
@@ -75,7 +75,7 @@ return this;
     }
 
     @Override
-    public JsAny ToString() {
+    public JsString ToString() {
         return new JsString("Symbol");
     }
 

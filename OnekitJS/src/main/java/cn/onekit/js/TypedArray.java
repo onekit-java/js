@@ -3,7 +3,7 @@ package cn.onekit.js;
 import java.util.Collections;
 import java.util.Comparator;
 
-import cn.onekit.JsAny;
+import cn.onekit.js.JsAny;
 import cn.onekit.js.core.Iterator;
 
 import cn.onekit.js.core.Onekit_JS;
@@ -720,7 +720,7 @@ public abstract   class TypedArray<T extends Number> implements Iterable, JsAny 
 
 
 
-    public JsAny ToString(){
+    public JsString ToString(){
         return new JsString("TypedArray");
     }
 

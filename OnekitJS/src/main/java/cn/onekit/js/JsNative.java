@@ -1,7 +1,7 @@
 package cn.onekit.js;
 
 
-import cn.onekit.JsAny;
+import cn.onekit.js.JsAny;
 
 public class JsNative implements JsAny {
 
@@ -31,7 +31,7 @@ public class JsNative implements JsAny {
     }
 
     @Override
-    public JsAny ToString() {
+    public JsString ToString() {
         return new JsString(THIS.getClass().getSimpleName());
     }
 

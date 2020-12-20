@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-import cn.onekit.JsAny;
+import cn.onekit.js.JsAny;
 import cn.onekit.js.core.Iterator;
 import cn.onekit.js.core.Onekit_JS;
 
@@ -661,7 +661,7 @@ public class JsArray extends ArrayList<JsAny> implements JsAny {
     }
 
     @Override
-    public JsAny ToString() {
+    public JsString ToString() {
         return JSON.stringify(this);
     }
 }

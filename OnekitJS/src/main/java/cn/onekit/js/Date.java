@@ -3,7 +3,7 @@ package cn.onekit.js;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 
-import cn.onekit.JsAny;
+import cn.onekit.js.JsAny;
 
 public class Date implements JsAny {
 
@@ -465,7 +465,7 @@ public class Date implements JsAny {
         return null;
     }
 
-    public JsAny ToString() {
+    public JsString ToString() {
 
         return new JsString(new SimpleDateFormat("EEE MMM dd yyyy hh:mm:ss 'GMT'Z").format(THIS));
     }

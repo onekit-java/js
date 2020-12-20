@@ -1,6 +1,6 @@
 package cn.onekit.js;
 
-import cn.onekit.JsAny;
+import cn.onekit.js.JsAny;
 
 public class Int32Array extends TypedArray{
     public final static int BYTES_PER_ELEMENT=4;

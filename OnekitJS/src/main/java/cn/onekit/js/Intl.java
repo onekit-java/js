@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import cn.onekit.JsAny;
+import cn.onekit.js.JsAny;
 import cn.onekit.js.core.Onekit_JS;
 
 public class Intl  {
@@ -1000,7 +1000,7 @@ return this;
 
 
             @Override
-            public JsAny ToString() {
+            public JsString ToString() {
                 return new JsString("Intl");
             }
 

@@ -2,7 +2,7 @@ package cn.onekit.js;
 
 import androidx.annotation.Nullable;
 
-import cn.onekit.JsAny;
+import cn.onekit.js.JsAny;
 
 public class Undefined implements JsAny {
 
@@ -27,7 +27,7 @@ public class Undefined implements JsAny {
     }
 
     @Override
-    public JsAny ToString() {
+    public JsString ToString() {
         return new JsString("undefined");
     }
 

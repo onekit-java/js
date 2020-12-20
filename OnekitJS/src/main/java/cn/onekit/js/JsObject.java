@@ -3,7 +3,7 @@ package cn.onekit.js;
 import java.util.HashMap;
 import java.util.Random;
 
-import cn.onekit.JsAny;
+import cn.onekit.js.JsAny;
 import cn.onekit.js.core.Iterator;
 
 public class JsObject extends HashMap<String, JsAny> implements JsAny {
@@ -95,7 +95,7 @@ public class JsObject extends HashMap<String, JsAny> implements JsAny {
     }
 
     @Override
-    public JsAny ToString() {
+    public JsString ToString() {
         return JSON.stringify(this);
     }
 

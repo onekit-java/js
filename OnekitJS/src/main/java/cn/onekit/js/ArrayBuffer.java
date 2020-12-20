@@ -1,6 +1,6 @@
 package cn.onekit.js;
 
-import cn.onekit.JsAny;
+import cn.onekit.js.JsAny;
 import cn.onekit.js.core.Onekit_JS;
 
 
@@ -22,7 +22,7 @@ public class ArrayBuffer implements JsAny {
         }
     }
 
-    public JsAny ToString() {
+    public JsString ToString() {
         return new JsString(String.format("ArrayBuffer { byteLength: %d }", getByteLength()));
     }
 

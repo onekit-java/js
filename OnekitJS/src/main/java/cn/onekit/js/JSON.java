@@ -5,7 +5,7 @@ import com.google.gson.Gson;
 import java.lang.reflect.Type;
 import java.util.List;
 
-import cn.onekit.JsAny;
+import cn.onekit.js.JsAny;
 
 public class JSON {
 	private static Gson gson = new Gson();

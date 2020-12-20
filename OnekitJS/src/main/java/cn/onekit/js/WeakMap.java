@@ -1,6 +1,6 @@
 package cn.onekit.js;
 
-import cn.onekit.JsAny;
+import cn.onekit.js.JsAny;
 
 public class WeakMap implements JsAny {
 ///////////////////////
@@ -41,7 +41,7 @@ public class WeakMap implements JsAny {
     }
 
     @Override
-    public JsAny ToString() {
+    public JsString ToString() {
         return new JsString("WeakMap");
     }
 

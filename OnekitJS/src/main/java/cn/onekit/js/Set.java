@@ -3,7 +3,7 @@ package cn.onekit.js;
 import java.util.HashSet;
 import java.util.Random;
 
-import cn.onekit.JsAny;
+import cn.onekit.js.JsAny;
 import cn.onekit.js.core.Iterator;
 import cn.onekit.js.core.Onekit_JS;
 
@@ -116,7 +116,7 @@ return this;
     }
 
     @Override
-    public JsAny ToString() {
+    public JsString ToString() {
         return new JsString("Set");
     }
 

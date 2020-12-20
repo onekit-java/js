@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import cn.onekit.JsAny;
+import cn.onekit.js.JsAny;
 
 public class RegExp implements JsAny {
 
@@ -41,7 +41,7 @@ return this;
     }
 
     @Override
-    public JsAny ToString() {
+    public JsString ToString() {
         return new JsString("RegExp");
     }
 
@@ -82,7 +82,7 @@ return this;
         }
 
         @Override
-        public JsAny ToString() {
+        public JsString ToString() {
             return new JsString("RegExp");
         }
 

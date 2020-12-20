@@ -1,6 +1,6 @@
 package cn.onekit.js;
 
-import cn.onekit.JsAny;
+import cn.onekit.js.JsAny;
 
 public class Proxy implements JsAny {
     public static JsObject apply(String target, JsObject thisArg, JsObject argumentsList){
@@ -68,7 +68,7 @@ return this;
     }
 
     @Override
-    public JsAny ToString() {
+    public JsString ToString() {
         return new JsString("Proxy");
     }
 

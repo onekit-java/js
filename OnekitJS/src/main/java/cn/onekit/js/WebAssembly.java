@@ -1,6 +1,6 @@
 package cn.onekit.js;
 
-import cn.onekit.JsAny;
+import cn.onekit.js.JsAny;
 
 public class WebAssembly implements JsAny {
     public static JsObject compile(JsArray bufferSource){
@@ -41,7 +41,7 @@ return this;
     }
 
     @Override
-    public JsAny ToString() {
+    public JsString ToString() {
         return new JsString("WebAssembly");
     }
 

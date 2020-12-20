@@ -1,6 +1,6 @@
 package cn.onekit.js;
 
-import cn.onekit.JsAny;
+import cn.onekit.js.JsAny;
 
 public class Uint8Array extends TypedArray{
     public final static JsNumber BYTES_PER_ELEMENT=new JsNumber(1);

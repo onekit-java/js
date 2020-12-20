@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 
-import cn.onekit.JsAny;
+import cn.onekit.js.JsAny;
 import cn.onekit.js.core.Onekit_JS;
 
 public  class JsString implements JsAny {
@@ -515,7 +515,7 @@ return this;
 					return null;
 			}
 		}*/
-	public JsAny ToString() {
+	public JsString ToString() {
 		return this;
 	}
 

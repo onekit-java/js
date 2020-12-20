@@ -1,6 +1,6 @@
 package cn.onekit.js;
 
-import cn.onekit.JsAny;
+import cn.onekit.js.JsAny;
 
 public class JsBoolean implements JsAny {
     public boolean THIS;
@@ -28,7 +28,7 @@ public class JsBoolean implements JsAny {
     public static JsBoolean valueof(JsAny value) {
         return new JsBoolean(value);
     }
-    public JsAny ToString() {
+    public JsString ToString() {
         return new JsString(String.valueOf(THIS));
     }
 
